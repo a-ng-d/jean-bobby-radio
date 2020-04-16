@@ -1,0 +1,29 @@
+// Animations
+
+@keyframes shiny-sunset
+  0%
+    background-position: 100%, 0
+  100%
+    background-position: 0, 0
+
+@keyframes rising-sunset
+  0%
+    background-size: 100%, 100%
+  100%
+    background-size: 400%, 100%
+
+@keyframes bouncing
+  0%, 25%, 50%, 75%, 100%
+    //transition-timing-function: var(--ease-rebound)
+  0%, 100%
+    transform: scale(2)
+    border-radius: var(--small-border-radius)
+  25%
+    transform: scale(var(--lower-value))
+    border-radius: var(--lower-value-radius)
+  50%
+    transform: scale(var(--upper-value))
+    border-radius: var(--upper-value-radius)
+  75%
+    transform: scale(var(--medium-value))
+    border-radius: var(--medium-value-radius)

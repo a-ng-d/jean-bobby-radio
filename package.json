@@ -1,0 +1,35 @@
+{
+  "name": "jean-bobby-radio",
+  "version": "1.0.0",
+  "description": "iObeya kitchen radio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "radio",
+    "webradio",
+    "broadcasting",
+    "jean-bobby"
+  ],
+  "author": "Aurélien Grimaud",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-load-plugins": "^2.0.2",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1",
+    "plyr": "^3.5.10",
+    "vinyl-ftp": "^0.6.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}
