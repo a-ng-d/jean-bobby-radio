@@ -7,6 +7,8 @@ gutil = require( 'gulp-util' ),
 
 ftp = require('vinyl-ftp'),
 
+sass = require('gulp-sass'),
+
 // Load all the plugins
 $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'gulp.*'],
