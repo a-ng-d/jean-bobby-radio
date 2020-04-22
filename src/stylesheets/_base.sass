@@ -1,78 +1,78 @@
 // Template
 
 html, body
-  background-color: var(--jb-white)
-  font-family: var(--montserrat)
-  font-size: var(--font-size)
-  font-weight: 400
-  line-height: 1.3
-  color: var(--jb-white)
+	background-color: var(--jb-white)
+	font-family: var(--montserrat)
+	font-size: var(--font-size)
+	font-weight: 400
+	line-height: 1.3
+	color: var(--jb-white)
 
 *, *::before, *::after
-  box-sizing: border-box
+	box-sizing: border-box
 
 a.large
-  padding: var(--regular-space)
-  color: var(--jb-blueberry)
-  background-color: var(--jb-white)
-  border-radius: var(--small-border-radius)
-  font-size: var(--plain-text)
-  text-decoration: none
-  transition: var(--jb-transition)
+	padding: var(--regular-space)
+	color: var(--jb-blueberry)
+	background-color: var(--jb-white)
+	border-radius: var(--small-border-radius)
+	font-size: var(--plain-text)
+	text-decoration: none
+	transition: var(--jb-transition)
 
-  &:hover
-    background: var(--jb-linear-sunset)
-    background-size: 800%, 100%
-    box-shadow: var(--levitation), var(--accent)
-    transform: translateY(-.8rem)
-    animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
+	&:hover
+		background: var(--jb-linear-sunset)
+		background-size: 800%, 100%
+		box-shadow: var(--levitation), var(--accent)
+		transform: translateY(-.8rem)
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
 
-  &:active
-    box-shadow: var(--levitation), var(--pressed)
+	&:active
+		box-shadow: var(--levitation), var(--pressed)
 
-  &:focus
-    outline: 0
-    box-shadow: var(--focus)
+	&:focus
+		outline: 0
+		box-shadow: var(--focus)
 
 p
-  font-size: var(--small-plain-text)
+	font-size: var(--small-plain-text)
 
-  &.p--center
-    text-align: center
+	&.p--center
+		text-align: center
 
-  &.p--sunset
-    --duration: 4s
+	&.p--sunset
+		--duration: 4s
 
-    background: var(--jb-linear-sunset)
-    background-size: 400%, 100%
-    background-clip: text
-    -webkit-text-fill-color: transparent
-    animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+		background: var(--jb-linear-sunset)
+		background-size: 400%, 100%
+		background-clip: text
+		-webkit-text-fill-color: transparent
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
 
 body
-  height: 100vh
-  display: grid
-  grid-template-rows: auto 11.2rem 2.4rem
+	height: 100vh
+	display: grid
+	grid-template-rows: auto 11.2rem 2.4rem
 
-  #jumbotron
-    grid-row: 1
-    background: var(--radial-mask), var(--texture), url(../assets/images/jean-bobby.jpg) center center, var(--jb-blueberry)
-    background-size: 100%, auto, cover, auto
-    background-blend-mode: normal, color-dodge, overlay, normal
-    display: grid
-    grid-template-rows: 12.8rem auto
+	#jumbotron
+		grid-row: 1
+		background: var(--radial-mask), var(--texture), url(../assets/images/jean-bobby.jpg) center center, var(--jb-blueberry)
+		background-size: 100%, auto, cover, auto
+		background-blend-mode: normal, color-dodge, overlay, normal
+		display: grid
+		grid-template-rows: 12.8rem auto
 
-    header.header
-      z-index: 2
+		header.header
+			z-index: 2
 
-    .play
-      grid-row: 2
-      display: grid
-      z-index: 1
+		.play
+			grid-row: 2
+			display: grid
+			z-index: 1
 
-  #player
-    grid-row: 2
-    background-color: var(--jb-white)
+	#player
+		grid-row: 2
+		background-color: var(--jb-white)
 
-  footer
-    grid-row: 3
+	footer
+		grid-row: 3

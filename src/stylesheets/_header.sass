@@ -1,50 +1,50 @@
 // Header
 
 header.header
-  grid-row: 1
-  margin: var(--large-space) var(--large-space) 0
-  display: grid
-  grid-template-columns: 11.2rem auto
-  grid-gap: var(--large-space)
+	grid-row: 1
+	margin: var(--large-space) var(--large-space) 0
+	display: grid
+	grid-template-columns: 11.2rem auto
+	grid-gap: var(--large-space)
 
-  .header__logotype
-    grid-column: 1
-    place-self: center
+	.header__logotype
+		grid-column: 1
+		place-self: center
 
-    svg
-      width: 11.2rem
-      height: 11.2rem
-      fill: var(--jb-white)
+		svg
+			width: 11.2rem
+			height: 11.2rem
+			fill: var(--jb-white)
 
-  .header__nav
-    grid-column: 2
-    display: flex
-    justify-content: flex-end
-    align-items: center
+	.header__nav
+		grid-column: 2
+		display: flex
+		justify-content: flex-end
+		align-items: center
 
-    & > *
-      margin: 0 var(--small-space)
-    & > *:nth-last-child(1)
-      margin: 0 0 0 var(--small-space)
+		& > *
+			margin: 0 var(--small-space)
+		& > *:nth-last-child(1)
+			margin: 0 0 0 var(--small-space)
 
-    .status
+		.status
 
-      &::before
-        font-size: var(--small-plain-text)
-        border-radius: var(--small-border-radius)
-        background: var(--jb-white)
-        padding: var(--small-space)
+			&::before
+				font-size: var(--small-plain-text)
+				border-radius: var(--small-border-radius)
+				background: var(--jb-white)
+				padding: var(--small-space)
 
-      &--on-air::before
-        --duration: 4s
+			&--on-air::before
+				--duration: 4s
 
-        content: 'on-air'
-        color: var(--jb-blueberry)
-        background: var(--jb-linear-sunset)
-        background-size: 800%, 100%
-        animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+				content: 'on-air'
+				color: var(--jb-blueberry)
+				background: var(--jb-linear-sunset)
+				background-size: 800%, 100%
+				animation: shiny-sunset var(--duration) infinite var(--ease-peps)
 
-      &--off-air:before
-        content: 'off-air'
-        color: var(--jb-white-4)
-        background: var(--jb-white-2)
+			&--off-air:before
+				content: 'off-air'
+				color: var(--jb-white-4)
+				background: var(--jb-white-2)

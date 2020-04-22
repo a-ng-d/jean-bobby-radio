@@ -1,162 +1,162 @@
 // Play button
 
 .play-cta
-  width: 16.4rem
-  height: 13.6rem
-  place-self: center
-  position: relative
-  z-index: 1
+	width: 16.4rem
+	height: 13.6rem
+	place-self: center
+	position: relative
+	z-index: 1
 
-  input[type='checkbox']
-    width: 100%
-    height: 100%
-    position: absolute
-    margin: 0
-    -webkit-appearance: unset
-    z-index: 0
-    outline: 0
-    top: 0
-    left: 0
-    cursor: pointer
+	input[type='checkbox']
+		width: 100%
+		height: 100%
+		position: absolute
+		margin: 0
+		-webkit-appearance: unset
+		z-index: 0
+		outline: 0
+		top: 0
+		left: 0
+		cursor: pointer
 
-    &:checked
+		&:checked
 
-      &~.play-cta__btn
-        & svg.icon--pressed
-          display: block
+			&~.play-cta__btn
+				& svg.icon--pressed
+					display: block
 
-        & svg.icon--not-pressed
-          display: none
+				& svg.icon--not-pressed
+					display: none
 
-        &:hover
+				&:hover
 
-          &~.play-cta__label
-            & .play-cta__label--play span
-              transform: translateY(-6.4rem)
-              opacity: 0
+					&~.play-cta__label
+						& .play-cta__label--play span
+							transform: translateY(-6.4rem)
+							opacity: 0
 
-            & .play-cta__label--pause span
-              transform: translateY(0)
-              opacity: 1
+						& .play-cta__label--pause span
+							transform: translateY(0)
+							opacity: 1
 
-      &~.play-cta__screens
+			&~.play-cta__screens
 
-        &--linear-sunset::before
-          --duration: .8s
+				&--linear-sunset::before
+					--duration: .8s
 
-          --lower-value: .8
-          --upper-value: 1.2
-          --medium-value: 1
+					--lower-value: .8
+					--upper-value: 1.2
+					--medium-value: 1
 
-          --lower-value-radius: 2.24rem
-          --upper-value-radius: 1.44rem
-          --medium-value-radius: 1.6rem
+					--lower-value-radius: 2.24rem
+					--upper-value-radius: 1.44rem
+					--medium-value-radius: 1.6rem
 
-          animation: bouncing var(--duration) infinite
+					animation: bouncing var(--duration) infinite
 
-        &--radial-sunset::after
-          --duration: .4s
+				&--radial-sunset::after
+					--duration: .4s
 
-          --lower-value: .6
-          --upper-value: 1.4
-          --medium-value: 1
+					--lower-value: .6
+					--upper-value: 1.4
+					--medium-value: 1
 
-          --lower-value-radius: 3.2rem
-          --upper-value-radius: 1.28rem
-          --medium-value-radius: 1.6rem
+					--lower-value-radius: 3.2rem
+					--upper-value-radius: 1.28rem
+					--medium-value-radius: 1.6rem
 
-          animation: bouncing var(--duration) infinite
+					animation: bouncing var(--duration) infinite
 
-    &.input--unactive
-      pointer-events: none
+		&.input--unactive
+			pointer-events: none
 
-  .play-cta__btn
-    width: 100%
-    height: 100%
-    background-color: var(--jb-white)
-    border-radius: var(--regular-border-radius)
-    outline: 0
-    transition: var(--jb-transition)
-    transition-delay: var(--delay)
+	.play-cta__btn
+		width: 100%
+		height: 100%
+		background-color: var(--jb-white)
+		border-radius: var(--regular-border-radius)
+		outline: 0
+		transition: var(--jb-transition)
+		transition-delay: var(--delay)
 
-    &:hover
-      box-shadow: var(--levitation), var(--accent)
-      transform: scale(1.2) translateY(-1.6rem)
+		&:hover
+			box-shadow: var(--levitation), var(--accent)
+			transform: scale(1.2) translateY(-1.6rem)
 
-      &~.play-cta__screens::before, &~.play-cta__screens::after
-        transform: scale(2)
-        border-radius: var(--small-border-radius)
-        --duration: 1s
+			&~.play-cta__screens::before, &~.play-cta__screens::after
+				transform: scale(2)
+				border-radius: var(--small-border-radius)
+				--duration: 1s
 
-      &~.play-cta__label .play-cta__label--play span
-          transform: translateY(0)
-          opacity: 1
+			&~.play-cta__label .play-cta__label--play span
+					transform: translateY(0)
+					opacity: 1
 
-    &:active
-      box-shadow: var(--levitation), var(--pressed)
+		&:active
+			box-shadow: var(--levitation), var(--pressed)
 
-    &--unactive
-      pointer-events: none
-      opacity: .6
+		&--unactive
+			pointer-events: none
+			opacity: .6
 
-    svg
-      width: 3.2rem
-      height: 3.2rem
-      margin: auto
-      fill: var(--jb-blueberry)
+		svg
+			width: 3.2rem
+			height: 3.2rem
+			margin: auto
+			fill: var(--jb-blueberry)
 
-  .play-cta__screens
-    width: 100%
-    height: 100%
-    position: absolute
-    z-index: -1
-    top: 0
-    left: 0
-    transition: var(--jb-transition)
-    transition-delay: var(--delay)
+	.play-cta__screens
+		width: 100%
+		height: 100%
+		position: absolute
+		z-index: -1
+		top: 0
+		left: 0
+		transition: var(--jb-transition)
+		transition-delay: var(--delay)
 
-    &::before, &::after
-      @extend .play-cta__screens
-      content: ''
-      border-radius: var(--regular-border-radius)
+		&::before, &::after
+			@extend .play-cta__screens
+			content: ''
+			border-radius: var(--regular-border-radius)
 
-    &--linear-sunset::before
-      background: var(--jb-linear-sunset)
-      top: 1.6rem
-      left: 3.2rem
-      z-index: -3
-      transform-origin: 100% 100%
-      --delay: .2s
+		&--linear-sunset::before
+			background: var(--jb-linear-sunset)
+			top: 1.6rem
+			left: 3.2rem
+			z-index: -3
+			transform-origin: 100% 100%
+			--delay: .2s
 
-    &--radial-sunset::after
-      background: var(--jb-radial-sunset)
-      top: 4.0rem
-      left: -4.0rem
-      z-index: -2
-      transform-origin: 0% 100%
-      --delay: .2s
+		&--radial-sunset::after
+			background: var(--jb-radial-sunset)
+			top: 4.0rem
+			left: -4.0rem
+			z-index: -2
+			transform-origin: 0% 100%
+			--delay: .2s
 
-  .play-cta__label
-    width: 60rem
-    height: 20rem
-    position: absolute
-    top: -22.8rem
-    left: -20.4rem
-    z-index: 1
+	.play-cta__label
+		width: 60rem
+		height: 20rem
+		position: absolute
+		top: -22.8rem
+		left: -20.4rem
+		z-index: 1
 
-    .play-cta__label--play, .play-cta__label--pause
-      width: 100%
-      height: 100%
-      position: absolute
-      display: flex
-      pointer-events: none
+		.play-cta__label--play, .play-cta__label--pause
+			width: 100%
+			height: 100%
+			position: absolute
+			display: flex
+			pointer-events: none
 
-    span
-      transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
-      transform: translateY(6.4rem)
-      opacity: 0
-      display: block
+		span
+			transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
+			transform: translateY(6.4rem)
+			opacity: 0
+			display: block
 
-      @for $i from 1 through 6
-        &:nth-child(0n + #{$i})
-          transition-delay: ($i * .1s) - .1s
+			@for $i from 1 through 6
+				&:nth-child(0n + #{$i})
+					transition-delay: ($i * .1s) - .1s

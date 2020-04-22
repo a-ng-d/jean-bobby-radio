@@ -2,110 +2,110 @@
 
 #player
 
-  .plyr audio
-    display: none
+	.plyr audio
+		display: none
 
-  .plyr--audio .plyr__control:hover,
-  .plyr--audio .plyr__control[aria-expanded=true]
-    background: var(--jb-linear-sunset)
-    background-size: 800%, 100%
-    color: var(--jb-white)
-    transform: translateY(-.8rem)
-    box-shadow: var(--levitation), var(--accent)
-    animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
+	.plyr--audio .plyr__control:hover,
+	.plyr--audio .plyr__control[aria-expanded=true]
+		background: var(--jb-linear-sunset)
+		background-size: 800%, 100%
+		color: var(--jb-white)
+		transform: translateY(-.8rem)
+		box-shadow: var(--levitation), var(--accent)
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
 
-    svg
-      fill: var(--jb-blueberry)
+		svg
+			fill: var(--jb-blueberry)
 
-  .plyr--audio .plyr__control.plyr__tab-focus
-    box-shadow: var(--focus)
+	.plyr--audio .plyr__control.plyr__tab-focus
+		box-shadow: var(--focus)
 
-  .plyr--audio .plyr__control:active
-    box-shadow: var(--levitation), var(--pressed)
+	.plyr--audio .plyr__control:active
+		box-shadow: var(--levitation), var(--pressed)
 
-  .plyr__controls
-    height: 100%
-    background-color: transparent
-    justify-content: flex-start
-    padding: 2.3rem
+	.plyr__controls
+		height: 100%
+		background-color: transparent
+		justify-content: flex-start
+		padding: 2.3rem
 
-    button
-      background-color: var(--jb-white)
-      background-position: 100%, 0
-      border-radius: var(--regular-border-radius)
-      padding: 2.4rem
-      transition: var(--jb-transition)
+		button
+			background-color: var(--jb-white)
+			background-position: 100%, 0
+			border-radius: var(--regular-border-radius)
+			padding: 2.4rem
+			transition: var(--jb-transition)
 
-    svg
-      fill: var(--jb-blueberry)
+		svg
+			fill: var(--jb-blueberry)
 
-    [data-plyr='play']
-      margin-right: var(--large-space)
+		[data-plyr='play']
+			margin-right: var(--large-space)
 
-    .plyr__volume
-      max-width: none
-      width: 100%
+		.plyr__volume
+			max-width: none
+			width: 100%
 
-      input[type=range]
-        margin-left: var(--regular-space)
-        color: var(--jb-blueberry)
-        height: 6.4rem
-        transition: var(--jb-transition)
-        border-radius: var(--regular-border-radius)
+			input[type=range]
+				margin-left: var(--regular-space)
+				color: var(--jb-blueberry)
+				height: 6.4rem
+				transition: var(--jb-transition)
+				border-radius: var(--regular-border-radius)
 
-        &:hover
-          transform: translateY(-.8rem)
+				&:hover
+					transform: translateY(-.8rem)
 
-          &::-webkit-slider-runnable-track
-            box-shadow: var(--levitation), var(--accent)
-          &::-moz-range-track
-            box-shadow: var(--levitation), var(--accent)
-          &::-ms-slider-runnable-track
-            box-shadow: var(--levitation), var(--accent)
+					&::-webkit-slider-runnable-track
+						box-shadow: var(--levitation), var(--accent)
+					&::-moz-range-track
+						box-shadow: var(--levitation), var(--accent)
+					&::-ms-slider-runnable-track
+						box-shadow: var(--levitation), var(--accent)
 
-        &:active
+				&:active
 
-          &::-webkit-slider-runnable-track
-            box-shadow: var(--levitation), var(--pressed)
-          &::-moz-range-track
-            box-shadow: var(--levitation), var(--pressed)
-          &::-ms-slider-runnable-track
-            box-shadow: var(--levitation), var(--pressed)
+					&::-webkit-slider-runnable-track
+						box-shadow: var(--levitation), var(--pressed)
+					&::-moz-range-track
+						box-shadow: var(--levitation), var(--pressed)
+					&::-ms-slider-runnable-track
+						box-shadow: var(--levitation), var(--pressed)
 
-        &::-webkit-slider-runnable-track
-          height: 100%
-          background-color: var(--jb-blueberry-05)
-          background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
-          border-radius: var(--regular-border-radius)
-        &::-moz-range-progress
-          height: 100%
-          background: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) 100%)
-          border-radius: var(--regular-border-radius) var(--regular-border-radius)
-        &::-moz-range-track
-          height: 100%
-          background-color: var(--jb-blueberry-05)
-          border-radius: var(--regular-border-radius)
-        &::-ms-slider-runnable-track
-          height: 100%
-          background-color: var(--jb-blueberry-05)
-          background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
-          border-radius: var(--regular-border-radius)
+				&::-webkit-slider-runnable-track
+					height: 100%
+					background-color: var(--jb-blueberry-05)
+					background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
+					border-radius: var(--regular-border-radius)
+				&::-moz-range-progress
+					height: 100%
+					background: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) 100%)
+					border-radius: var(--regular-border-radius) var(--regular-border-radius)
+				&::-moz-range-track
+					height: 100%
+					background-color: var(--jb-blueberry-05)
+					border-radius: var(--regular-border-radius)
+				&::-ms-slider-runnable-track
+					height: 100%
+					background-color: var(--jb-blueberry-05)
+					background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
+					border-radius: var(--regular-border-radius)
 
-        &::-webkit-slider-thumb
-          visibility: hidden
-          cursor: col-resize
-        &::-moz-range-thumb
-          visibility: hidden
-          cursor: col-resize
-        &::-ms-slider-thumb
-          visibility: hidden
-          cursor: col-resize
+				&::-webkit-slider-thumb
+					visibility: hidden
+					cursor: col-resize
+				&::-moz-range-thumb
+					visibility: hidden
+					cursor: col-resize
+				&::-ms-slider-thumb
+					visibility: hidden
+					cursor: col-resize
 
-        &.plyr__tab-focus::-webkit-slider-runnable-track
-          box-shadow: var(--focus)
+				&.plyr__tab-focus::-webkit-slider-runnable-track
+					box-shadow: var(--focus)
 
-        &.plyr__tab-focus::-moz-range-track
-          box-shadow: var(--focus)
+				&.plyr__tab-focus::-moz-range-track
+					box-shadow: var(--focus)
 
-        &.plyr__tab-focus::-ms-slider-runnable-track
-          box-shadow: var(--focus)
+				&.plyr__tab-focus::-ms-slider-runnable-track
+					box-shadow: var(--focus)

@@ -5,21 +5,23 @@ extends _init.pug
 block content
 	
 	include ../assets/images/mono-sheet.svg
-					
+
 	#jumbotron
 		include _header.pug
 		.play
 			include _play-btn.pug
 	#player
 		audio.player
+
 	footer
 		p.p--center.p--sunset
 			| Design + &lt;/code&gt; - Sir Capitaine Nicolas De Briochin
-	
+
 	script(
 		src='js/plyr.min.js'
 		type='text/javascript'
 	)
+	
 	script(
 		src='js/main.js'
 		type='text/javascript'
