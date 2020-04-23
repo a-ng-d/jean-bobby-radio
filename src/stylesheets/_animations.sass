@@ -13,8 +13,6 @@
 		background-size: 400%, 100%
 
 @keyframes bouncing
-	0%, 25%, 50%, 75%, 100%
-		//transition-timing-function: var(--ease-rebound)
 	0%, 100%
 		transform: scale(2)
 		border-radius: var(--small-border-radius)
@@ -27,3 +25,9 @@
 	75%
 		transform: scale(var(--medium-value))
 		border-radius: var(--medium-value-radius)
+
+@keyframes flash-news
+	0%
+		right: -200%
+	100%
+		right: 200%

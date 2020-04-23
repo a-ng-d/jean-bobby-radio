@@ -4,12 +4,13 @@
 
 	// Typography
 	--font-size: 62.5%
-	--x-large-size: 16rem
-	--large-size: calc(var(--x-large-size) - 1.6rem)
-	--medium-size: calc(var(--large-size) - 1.6rem)
-	--small-size: calc(var(--medium-size) - 1.6rem)
-	--x-small-size: calc(var(--small-size) - 1.6rem)
-
+	--xlarge-size: 16rem
+	--large-size: calc(var(--xlarge-size) - var(--plain-text))
+	--medium-size: calc(var(--large-size) - var(--plain-text))
+	--small-size: calc(var(--medium-size) - var(--plain-text))
+	--xsmall-size: calc(var(--small-size) - var(--plain-text))
+	--xxsmall-size: calc(var(--xsmall-size) - var(--plain-text))
+	
 	--plain-text: 1.6rem
 	--small-plain-text: 1.2rem
 
@@ -19,11 +20,11 @@
 	--montserrat: 'Montserrat', Arial, Helvetica, sans-serif
 
 	// Spacing
-	--x-large-space: 6.4rem
+	--xlarge-space: 6.4rem
 	--large-space: 3.2rem
 	--regular-space: 1.6rem
 	--small-space: .8rem
-	--x-small-size: .4rem
+	--xsmall-space: .4rem
 
 	// Colors
 	--jb-white-rgb: 255, 255, 255

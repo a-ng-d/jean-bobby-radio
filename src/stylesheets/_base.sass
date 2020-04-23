@@ -60,7 +60,7 @@ body
 		background-size: 100%, auto, cover, auto
 		background-blend-mode: normal, color-dodge, overlay, normal
 		display: grid
-		grid-template-rows: 12.8rem auto
+		grid-template-rows: 12.8rem auto 7.2rem
 
 		header.header
 			z-index: 2
@@ -69,6 +69,24 @@ body
 			grid-row: 2
 			display: grid
 			z-index: 1
+
+		.metadata
+			overflow: hidden
+			position: relative
+
+			h6.shazam
+				position: absolute
+				white-space: nowrap
+				animation: flash-news 32s infinite linear forwards
+				transform: translateY(var(--xlarge-space))
+				transition: opacity 2s linear, transform var(--duration) var(--ease-peps)
+
+				&.shazam--fade-out
+					opacity: 0
+
+				&.shazam--drawer
+					transform: translateY(0)
+					
 
 	#player
 		grid-row: 2

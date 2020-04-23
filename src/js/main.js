@@ -1,4 +1,4 @@
-//- plyr options
+//- Main JS
 
 // Global
 var streamUrl = 'https://streams.radiomast.io/d18496eb-7d4a-4b80-aac1-757c7da9cb17',
@@ -38,15 +38,17 @@ player.source = {
 
 // Play button toggle
 function playJB() {
-	return player.togglePlay()
-};
-
-function check() {
 	if(toggle == true) {
+		player.pause();
 		$('#check').checked = false;
+		cl('.metadata h6').remove('shazam--drawer');
+
 		toggle = false;
 	} else {
+		player.play();
 		$('#check').checked = true;
+		cl('.metadata h6').add('shazam--drawer');
+
 		toggle = true;
 	}
 };
@@ -91,6 +93,34 @@ function offAir() {
 	toggle = false;
 };
 
+// Streaming metadatas (artist and title)
+function shazam() {
+	try {
+		var url = streamUrl + '/metadata';
+		var eventSource = new EventSource(url);
+
+		eventSource.onmessage = function(event) {
+			var metadata = JSON.parse(event.data);
+			var artistTitle = metadata['metadata'];
+
+			nextTrack(artistTitle);
+		}
+	} catch(error) {
+		var errorMessage = 'Unknown 🙈'
+
+		console.log(errorMessage);
+		console.log(error);
+	}
+};
+
+function nextTrack(track) {
+	cl('.metadata h6').add('shazam--fade-out')
+	setTimeout(function() {
+		$('.metadata h6').innerHTML = track;
+		cl('.metadata h6').remove('shazam--fade-out')
+	}, 2000);
+};
+
 document.addEventListener('load', getStatus());
 document.addEventListener('load', rlStatus());
-
+document.addEventListener('DOMContentLoaded', shazam())
