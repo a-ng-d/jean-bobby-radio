@@ -138,16 +138,21 @@ function metadata(boolean) {
 };
 
 function notification(track) {
-	if (Notification.permission !== 'granted')
+	var isChecked = $('#switch').checked;
+	if(Notification.permission !== 'granted')
 		Notification.requestPermission();
 	else {
-		var notification = new Notification('Now playing', {
-			icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-			body: track,
-		});
-		notification.onclick = function() {
-			window.open('localhost:8080');
-		};
+		if(isChecked == true) {
+			var notification = new Notification('Now playing', {
+				icon: '../assets/images/thumbnail.png',
+				body: track,
+			});
+			notification.onclick = function() {
+				window.open('localhost:8080');
+			};
+		} else {
+
+		}
 	}
 };
 
