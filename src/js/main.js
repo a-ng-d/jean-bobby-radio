@@ -41,13 +41,13 @@ function playJB() {
 	if(toggle == true) {
 		player.pause();
 		$('#check').checked = false;
-		cl('.metadata h6').remove('shazam--drawer');
+		metadata(false);
 
 		toggle = false;
 	} else {
 		player.play();
 		$('#check').checked = true;
-		cl('.metadata h6').add('shazam--drawer');
+		metadata(true);
 
 		toggle = true;
 	}
@@ -90,6 +90,9 @@ function offAir() {
 	
 	cl('#check').add('input--unactive');
 	$('#check').checked = false;
+
+	metadata(false);
+	
 	toggle = false;
 };
 
@@ -104,6 +107,9 @@ function shazam() {
 			var artistTitle = metadata['metadata'];
 
 			nextTrack(artistTitle);
+			if(player.playing == true) {
+				notification(artistTitle)
+			} else {}
 		}
 	} catch(error) {
 		var errorMessage = 'Unknown 🙈'
@@ -119,6 +125,30 @@ function nextTrack(track) {
 		$('.metadata h6').innerHTML = track;
 		cl('.metadata h6').remove('shazam--fade-out')
 	}, 2000);
+};
+
+function metadata(boolean) {
+	if(boolean == true) {
+		cl('.metadata h6').add('shazam--drawer');
+		cl('.metadata h6').add('shazam--animation');
+	} else if(boolean == false) {
+		cl('.metadata h6').remove('shazam--drawer');
+		cl('.metadata h6').remove('shazam--animation');
+	}
+};
+
+function notification(track) {
+	if (Notification.permission !== 'granted')
+		Notification.requestPermission();
+	else {
+		var notification = new Notification('Now playing', {
+			icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+			body: track,
+		});
+		notification.onclick = function() {
+			window.open('localhost:8080');
+		};
+	}
 };
 
 document.addEventListener('load', getStatus());

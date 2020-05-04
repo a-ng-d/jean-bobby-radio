@@ -77,15 +77,18 @@ body
 			h6.shazam
 				position: absolute
 				white-space: nowrap
-				animation: flash-news 32s infinite linear forwards
-				transform: translateY(var(--xlarge-space))
+				left: 100%
+				visibility: hidden
 				transition: opacity 2s linear, transform var(--duration) var(--ease-peps)
 
 				&.shazam--fade-out
 					opacity: 0
 
 				&.shazam--drawer
-					transform: translateY(0)
+					visibility: visible
+
+				&.shazam--animation
+					animation: flash-news 16s infinite linear 2s
 					
 
 	#player
