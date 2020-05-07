@@ -127,16 +127,6 @@ function nextTrack(track) {
 	}, 2000);
 };
 
-function metadata(boolean) {
-	if(boolean == true) {
-		cl('.metadata h6').add('shazam--drawer');
-		cl('.metadata h6').add('shazam--animation');
-	} else if(boolean == false) {
-		cl('.metadata h6').remove('shazam--drawer');
-		cl('.metadata h6').remove('shazam--animation');
-	}
-};
-
 function notification(track) {
 	var isChecked = $('#switch').checked;
 	if(Notification.permission !== 'granted')
@@ -153,6 +143,16 @@ function notification(track) {
 		} else {
 
 		}
+	}
+};
+
+function metadata(boolean) {
+	if(boolean == true) {
+		cl('.metadata h6').add('shazam--drawer');
+		cl('.metadata h6').add('shazam--animation');
+	} else if(boolean == false) {
+		cl('.metadata h6').remove('shazam--drawer');
+		cl('.metadata h6').remove('shazam--animation');
 	}
 };
 
