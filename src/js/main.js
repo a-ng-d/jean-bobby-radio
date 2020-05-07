@@ -87,12 +87,12 @@ function offAir() {
 	cl('.status').add('status--off-air');
 
 	cl('.play-cta__btn').add('play-cta__btn--unactive');
-	
+
 	cl('#check').add('input--unactive');
 	$('#check').checked = false;
 
 	metadata(false);
-	
+
 	toggle = false;
 };
 
@@ -144,7 +144,7 @@ function notification(track) {
 	else {
 		if(isChecked == true) {
 			var notification = new Notification('Now playing', {
-				icon: '../assets/images/thumbnail.png',
+				icon: '../assets/images/jean-bobby-icon.png',
 				body: track,
 			});
 			notification.onclick = function() {
