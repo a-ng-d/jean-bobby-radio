@@ -112,7 +112,8 @@ function shazam() {
 			} else {}
 		}
 	} catch(error) {
-		var errorMessage = 'Unknown 🙈'
+		var errorMessage = 'Unknown 🙈';
+		nextTrack(errorMessage);
 
 		console.log(errorMessage);
 		console.log(error);
