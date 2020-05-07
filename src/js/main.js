@@ -148,7 +148,7 @@ function notification(track) {
 				body: track,
 			});
 			notification.onclick = function() {
-				window.open('localhost:8080');
+				window.open(document.URL);
 			};
 		} else {
 
