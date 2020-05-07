@@ -60,16 +60,12 @@
 						box-shadow: var(--levitation), var(--accent)
 					&::-moz-range-track
 						box-shadow: var(--levitation), var(--accent)
-					&::-ms-slider-runnable-track
-						box-shadow: var(--levitation), var(--accent)
 
 				&:active
 
 					&::-webkit-slider-runnable-track
 						box-shadow: var(--levitation), var(--pressed)
 					&::-moz-range-track
-						box-shadow: var(--levitation), var(--pressed)
-					&::-ms-slider-runnable-track
 						box-shadow: var(--levitation), var(--pressed)
 
 				&::-webkit-slider-runnable-track
@@ -85,11 +81,6 @@
 					height: 100%
 					background-color: var(--jb-blueberry-05)
 					border-radius: var(--regular-border-radius)
-				&::-ms-slider-runnable-track
-					height: 100%
-					background-color: var(--jb-blueberry-05)
-					background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
-					border-radius: var(--regular-border-radius)
 
 				&::-webkit-slider-thumb
 					visibility: hidden
@@ -97,15 +88,9 @@
 				&::-moz-range-thumb
 					visibility: hidden
 					cursor: col-resize
-				&::-ms-slider-thumb
-					visibility: hidden
-					cursor: col-resize
 
 				&.plyr__tab-focus::-webkit-slider-runnable-track
 					box-shadow: var(--focus)
 
 				&.plyr__tab-focus::-moz-range-track
-					box-shadow: var(--focus)
-
-				&.plyr__tab-focus::-ms-slider-runnable-track
 					box-shadow: var(--focus)
