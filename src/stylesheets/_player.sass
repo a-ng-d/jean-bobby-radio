@@ -55,31 +55,24 @@
 
 				&:hover
 					transform: translateY(-.8rem)
-
-					&::-webkit-slider-runnable-track
-						box-shadow: var(--levitation), var(--accent)
-					&::-moz-range-track
-						box-shadow: var(--levitation), var(--accent)
+					box-shadow: var(--levitation), var(--accent)
 
 				&:active
-
-					&::-webkit-slider-runnable-track
-						box-shadow: var(--levitation), var(--pressed)
-					&::-moz-range-track
-						box-shadow: var(--levitation), var(--pressed)
-
+					box-shadow: var(--levitation), var(--pressed)
+					
 				&::-webkit-slider-runnable-track
 					height: 100%
-					background-color: var(--jb-blueberry-05)
+					background-color: var(--jb-blueberry-1)
 					background-image: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) var(--value, 0), transparent var(--value, 0))
 					border-radius: var(--regular-border-radius)
+				
 				&::-moz-range-progress
 					height: 100%
 					background: linear-gradient(to right, var(--jb-milka) 0, var(--jb-salmon) 100%)
 					border-radius: var(--regular-border-radius) var(--regular-border-radius)
 				&::-moz-range-track
 					height: 100%
-					background-color: var(--jb-blueberry-05)
+					background-color: var(--jb-blueberry-1)
 					border-radius: var(--regular-border-radius)
 
 				&::-webkit-slider-thumb
