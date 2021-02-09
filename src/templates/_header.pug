@@ -1,6 +1,7 @@
 //- Header
 
 - var label = 'Enable notifications'
+- var playlist = 'Contribute to the "Place du Village" playlist'
 
 header.header
 
@@ -9,8 +10,7 @@ header.header
 			use(xlink:href='#logotype')
 
 	nav.header__nav
-		a.large(href='https://open.spotify.com/playlist/65SJCvnRdfbLpyxTVCglYJ' target='_blank') Contribuer à la playlist Place du village
-
+		a.button(href='https://open.spotify.com/playlist/65SJCvnRdfbLpyxTVCglYJ' target='_blank')= playlist
 		include _switch.pug
 		
-		.status
+		.tag.status

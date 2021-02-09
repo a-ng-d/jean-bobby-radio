@@ -27,23 +27,5 @@ header.header
 			margin: 0 0 0 var(--small-space)
 
 		.status
-
-			&::before
-				font-size: var(--small-plain-text)
-				border-radius: var(--small-border-radius)
-				background: var(--jb-white)
-				padding: var(--small-space)
-
-			&--on-air::before
-				--duration: 4s
-
-				content: 'on-air'
-				color: var(--jb-blueberry)
-				background: var(--jb-linear-sunset)
-				background-size: 800%, 100%
-				animation: shiny-sunset var(--duration) infinite var(--ease-peps)
-
-			&--off-air:before
-				content: 'off-air'
-				color: var(--jb-white-4)
-				background: var(--jb-white-2)
+			@include active-tag('on-air', 'on-air')
+			@include inactive-tag('off-air', 'off-air')

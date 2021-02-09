@@ -1,13 +1,75 @@
 // Components
 
-// Switch
-.switch
-	height: 5.2rem
-	border: .1rem solid var(--jb-white)
-	padding: 0 var(--small-space) 0 var(--regular-space)
+// Button
+.button
+	height: var(--xlarge-size)
+	padding: 0 var(--regular-space)
+	color: var(--jb-blueberry)
+	background-color: var(--jb-white)
 	border-radius: var(--small-border-radius)
+	font-size: var(--plain-text)
+	text-decoration: none
+	transition: var(--jb-transition)
 	display: flex
 	align-items: center
+
+	&:hover
+		background: var(--jb-linear-sunset)
+		background-size: 800%, 100%
+		box-shadow: var(--levitation), var(--accent)
+		transform: translateY(-8rem)
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
+
+	&:active
+		box-shadow: var(--levitation), var(--pressed)
+
+	&:focus
+		outline: 0
+		box-shadow: var(--focus)
+
+// Tag
+@mixin active-tag($class, $label)
+	&--#{$class}::before
+		content: $label
+		color: var(--jb-blueberry)
+		background: var(--jb-linear-sunset)
+		background-size: 800%, 100%
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+
+@mixin inactive-tag($class, $label)
+	&--#{$class}::before
+		content: $label
+		color: var(--jb-white-4)
+		background: var(--jb-white-2)
+
+@mixin regular-tag($class, $label)
+	&--#{$class}::before
+		content: $label
+		color: var(--jb-blueberry)
+		background: var(--jb-white)
+
+.tag
+
+	&::before
+		font-size: var(--small-plain-text)
+		border-radius: var(--small-border-radius)
+		background: var(--jb-white)
+		padding: var(--small-space)
+
+
+// Switch
+.switch
+	height: var(--xlarge-size)
+	border: 1rem solid var(--jb-white)
+	padding: 0 var(--regular-space)
+	border-radius: var(--small-border-radius)
+	cursor: pointer
+	display: flex
+	align-items: center
+
+	&--unactive
+		pointer-events: none
+		opacity: .6
 
 	.switch_label
 		font-size: var(--plain-text)
@@ -15,8 +77,8 @@
 		cursor: pointer
 
 	.switch_component
-		width: 4.8rem
-		height: 3.2rem
+		width: 48rem
+		height: var(--large-size)
 		position: relative
 
 		.switch_spot
@@ -30,7 +92,7 @@
 			cursor: pointer
 
 			&:checked~.switch_knob
-				left: 2rem
+				left: 20rem
 				box-shadow: var(--levitation)
 
 			&:checked~.switch_indicator
@@ -44,13 +106,13 @@
 				box-shadow: var(--focus)
 
 		.switch_knob
-			width: 2.4rem
-			height: 2.4rem
+			width: 24rem
+			height: 24rem
 			background: var(--jb-white)
-			border-radius: 1.2rem
+			border-radius: 12rem
 			position: absolute
-			top: .4rem
-			left: .4rem
+			top: 4rem
+			left: 4rem
 			z-index: 2
 			transition: var(--jb-transition)
 

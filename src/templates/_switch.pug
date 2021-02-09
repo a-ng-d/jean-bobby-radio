@@ -1,8 +1,11 @@
 //- Switch
 
-.switch
+.switch(onclick='enableNotifications()')
+
 	label.switch_label(for='switch')= label
+	
 	.switch_component
-		input#switch.switch_spot(type="checkbox")
+		
+		input#switch.switch_spot(type="checkbox" name='switch')
 		.switch_knob
 		.switch_indicator

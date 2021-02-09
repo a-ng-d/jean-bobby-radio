@@ -11,29 +11,6 @@ html, body
 *, *::before, *::after
 	box-sizing: border-box
 
-a.large
-	padding: var(--regular-space)
-	color: var(--jb-blueberry)
-	background-color: var(--jb-white)
-	border-radius: var(--small-border-radius)
-	font-size: var(--plain-text)
-	text-decoration: none
-	transition: var(--jb-transition)
-
-	&:hover
-		background: var(--jb-linear-sunset)
-		background-size: 800%, 100%
-		box-shadow: var(--levitation), var(--accent)
-		transform: translateY(-.8rem)
-		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
-
-	&:active
-		box-shadow: var(--levitation), var(--pressed)
-
-	&:focus
-		outline: 0
-		box-shadow: var(--focus)
-
 p
 	font-size: var(--small-plain-text)
 
@@ -48,6 +25,15 @@ p
 		background-clip: text
 		-webkit-text-fill-color: transparent
 		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+
+	&.p--large-label
+		font-size: calc(var(--plain-text) * 4)
+		font-weight: 700
+
+	&.p--regular-label
+		font-size: calc(var(--plain-text) * 2)
+		font-weight: 500
+
 
 body
 	height: 100vh
