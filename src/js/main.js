@@ -134,27 +134,114 @@ function shazam() {
 	} catch(error) {
 		var errorMessage = 'Unknown 🙈';
 		nextTrack(errorMessage);
+// Get metadata (provider, artist, title)
+// Artist and title
+async function shazam() {
 
-		console.log(errorMessage);
-		console.log(error);
+	return await fetch(`${domain}/status-json.xsl`)
+		.then(response => {
+			console.log(`${response.url}: ${response.status}`);
+			if (response.ok) {
+				return response.json()
+			}
+		})
+		.then(json => getTrackTitle(json))
+		.catch(error => console.error(error));
+
+	function getTrackTitle(datas) {
+		let obj, arr, title;
+		title = datas.icestats.source.title;
+		if (title == undefined) {
+			obj = {
+				artist: 'Here is…',
+				title: 'an advertising break…'
+			}
+		} else {
+			arr = title.split(' - ');
+			obj = {
+				artist: arr[0],
+				title: arr[1]
+			}
+		};
+
+		return obj
 	}
+
 };
 
-function nextTrack(track) {
-	cl('.metadata h6').add('shazam--fade-out')
-	setTimeout(function() {
-		$('.metadata h6').innerHTML = track;
-		cl('.metadata h6').remove('shazam--fade-out')
-	}, 2000);
+// Provider
+async function prozam() {
+
+	return await fetch(
+		`https://api.spotify.com/v1/playlists/${playlistID}/tracks?market=FR&fields=items(added_by%2C%20track(artists(name)%2C%20name))`,
+		{
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		})
+			.then(response => {
+				if (response.ok) {
+					return response.json()
+				}
+			})
+			.then(json => matchCurrentListening(json.items))
+			.catch(error => console.error(error));
+
+	async function matchCurrentListening(datas) {
+		const letsShazam = await shazam();
+		let result = datas.filter(data =>
+			data.track.name.includes(letsShazam.title) == true
+		);
+		return await getProvider(result[0].added_by.id)
+	};
+
+	async function getProvider(id) {
+		return await fetch(
+			`https://api.spotify.com/v1/users/${id}`,
+			{
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`
+				}
+			})
+				.then(response => {
+					if (response.ok) {
+						return response.json()
+					}
+				})
+				.then(json => {
+					let obj = {
+						provider: json.display_name
+					};
+					return obj
+				})
+				.catch(error => console.error(error))
+
+	}
+
 };
 
-function notification(track) {
-	var isChecked = $('#switch').checked;
-	if(Notification.permission !== 'granted')
-		Notification.requestPermission();
-	else {
-		if(isChecked == true) {
-			var notification = new Notification('Now playing', {
+// Whole track infos
+async function shapro() {
+
+	const letsShazam = await shazam(),
+				letsProzam = await prozam();
+
+	if (letsProzam.provider == undefined) {
+		letsProzam.provider = '¯\_(ツ)_/¯'
+	};
+
+	let obj = {
+		artist: letsShazam.artist,
+		title: letsShazam.title,
+		provider: letsProzam.provider
+	};
+
+	return obj
+};
 				icon: '../assets/images/jean-bobby-icon.png',
 				body: track,
 			});
