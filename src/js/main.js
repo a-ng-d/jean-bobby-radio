@@ -1,9 +1,13 @@
 //- Main JS
 
 // Global
-var streamUrl = 'https://streams.radiomast.io/d18496eb-7d4a-4b80-aac1-757c7da9cb17',
+const
+		domain = 'http://broadcaster.jean-bobby-radi.ovh:8000',
+		mount = '/jbradio',
+		streamUrl = domain + mount,
 		title = 'Jean-Bobby Radio',
-		toggle = false,
+		playlistID = '65SJCvnRdfbLpyxTVCglYJ',
+		token = 'BQBYAWMcjY-euKjnMdMeZrc73Xqo_paAddNlXWtJEImk4Qp1YKIgKBYNMB0hwCKgQtt7jR6THwmknh4f8hmFSzxG-kX8t0Qr0ZBhgc1r77QAWPG73fzuvtZ9Ct2r8ZWhoobWRg',
 		freq = 10000,
 		cta = $('.play-cta__btn');
 
