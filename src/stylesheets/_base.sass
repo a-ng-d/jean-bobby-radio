@@ -55,26 +55,21 @@ body
 			grid-row: 2
 			display: grid
 			z-index: 1
-
-		.metadata
-			overflow: hidden
 			position: relative
 
-			h6.shazam
+			.track
+				width: 800rem
+				text-align: right
 				position: absolute
-				white-space: nowrap
-				left: 100%
-				visibility: hidden
-				transition: opacity 2s linear, transform var(--duration) var(--ease-peps)
+				bottom: var(--large-space)
+				right: var(--large-space)
 
-				&.shazam--fade-out
-					opacity: 0
+				div + div
+					margin: var(--large-space) 0 0
 
-				&.shazam--drawer
-					visibility: visible
-
-				&.shazam--animation
-					animation: flash-news 16s infinite linear 2s			
+				.tag_label
+					@include regular-tag('artist', 'Artist')
+					@include regular-tag('title', 'Title')
 
 	#player
 		grid-row: 2
