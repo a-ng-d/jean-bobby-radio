@@ -112,19 +112,44 @@ function offAir() {
 	toggle = false;
 };
 
-// Streaming metadatas (artist and title)
-function shazam() {
-	try {
-		var url = streamUrl + '/metadata';
-		var eventSource = new EventSource(url);
+// Notifications status
+function getNotificationsStatus() {
+
+	navigator.permissions.query({name: 'notifications'})
+		.then(permission => {
+			if (permission.state == 'denied') {
+				cl('.switch').add('switch--unactive')
+			}
+			permission.onchange = function() {
 				if (permission.state == 'denied') {
 					cl('.switch').add('switch--unactive')
 				} else {
 					cl('.switch').remove('switch--unactive')
+				}
+			}
+		})
 
-		eventSource.onmessage = function(event) {
-			var metadata = JSON.parse(event.data);
-			var artistTitle = metadata['metadata'];
+}
+
+// Notifications enabler
+function enableNotifications() {
+
+	navigator.permissions.query({name: 'notifications'})
+		.then(permission => {
+			if (permission.state !== 'granted') {
+				Notification.requestPermission();
+				notificationsSt.checked = false
+			}
+			permission.onchange = function() {
+				if (permission.state == 'granted') {
+					notificationsSt.checked = true
+				} else {
+					notificationsSt.checked = false
+				}
+			}
+		})
+
+}
 
 			nextTrack(artistTitle);
 			if(player.playing == true) {
