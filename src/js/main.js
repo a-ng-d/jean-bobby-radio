@@ -11,6 +11,13 @@ const
 		freq = 10000,
 		cta = $('.play-cta__btn');
 
+let
+	toggle = false;
+
+const
+	notificationsSt = $('input[name="switch"]'),
+	playSt = $('input[name="play"]');
+
 function $(elmt) {
 	return document.querySelector(elmt)
 };
@@ -42,19 +49,21 @@ player.source = {
 
 // Play button toggle
 function playJB() {
-	if(toggle == true) {
+
+	if (toggle) {
 		player.pause();
-		$('#check').checked = false;
-		metadata(false);
+		playSt.checked = false;
+		displayTrack(false);
 
 		toggle = false;
 	} else {
 		player.play();
-		$('#check').checked = true;
-		metadata(true);
+		playSt.checked = true;
+		displayTrack(true);
 
 		toggle = true;
 	}
+
 };
 
 // Streaming status
@@ -74,26 +83,29 @@ function rlStatus() {
 };
 
 function onAir() {
-	console.log('on-air');
+
+	console.log('On air');
 
 	cl('.status').remove('status--off-air');
 	cl('.status').add('status--on-air');
 
 	cl('.play-cta__btn').remove('play-cta__btn--unactive');
 
-	cl('#check').remove('input--unactive');
+	cl('input[name="play"]').remove('input--unactive');
+
 };
 
 function offAir() {
-	console.log('off-air');
+
+	console.log('Off air');
 
 	cl('.status').remove('status--on-air')
 	cl('.status').add('status--off-air');
 
 	cl('.play-cta__btn').add('play-cta__btn--unactive');
 
-	cl('#check').add('input--unactive');
-	$('#check').checked = false;
+	cl('input[name="play"]').add('input--unactive');
+	playSt.checked = false;
 
 	metadata(false);
 
@@ -105,6 +117,10 @@ function shazam() {
 	try {
 		var url = streamUrl + '/metadata';
 		var eventSource = new EventSource(url);
+				if (permission.state == 'denied') {
+					cl('.switch').add('switch--unactive')
+				} else {
+					cl('.switch').remove('switch--unactive')
 
 		eventSource.onmessage = function(event) {
 			var metadata = JSON.parse(event.data);
