@@ -68,18 +68,18 @@ function playJB() {
 
 // Streaming status
 function getStatus() {
-	var req = new Request(streamUrl);
 
-	fetch(req).then(function(response) {
-		onAir();
-	})
-	.catch(function() {
-		offAir();
-	})
-};
+	fetch(streamUrl)
+		.then(response => {
+			console.log(`${response.url}: ${response.status}`);
+			if (response.status === 200) {
+				onAir()
+			} else {
+				offAir()
+			}
+		})
+		.catch(error => offAir());
 
-function rlStatus() {
-	setInterval(getStatus, freq);
 };
 
 function onAir() {
