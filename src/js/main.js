@@ -107,9 +107,10 @@ function offAir() {
 	cl('input[name="play"]').add('input--unactive');
 	playSt.checked = false;
 
-	metadata(false);
+	displayTrack(false);
 
 	toggle = false;
+
 };
 
 // Notifications status
@@ -151,14 +152,6 @@ function enableNotifications() {
 
 }
 
-			nextTrack(artistTitle);
-			if(player.playing == true) {
-				notification(artistTitle)
-			} else {}
-		}
-	} catch(error) {
-		var errorMessage = 'Unknown 🙈';
-		nextTrack(errorMessage);
 // Get metadata (provider, artist, title)
 // Artist and title
 async function shazam() {
@@ -267,28 +260,28 @@ async function shapro() {
 
 	return obj
 };
+
+async function displayTrack(bool) {
+
+	if (bool) {
+		const letsShaPro = await shapro();
+
+		$('.provider p').innerHTML = `${letsShaPro.provider} presents…`;
+		$('.artist p').innerHTML = letsShaPro.artist;
+		$('.title p').innerHTML = letsShaPro.title;
+
+		if (notificationsSt.checked == true) {
+			var notification = new Notification('Now playing…', {
 				icon: '../assets/images/jean-bobby-icon.png',
-				body: track,
+				body: `${letsShaPro.artist}・${letsShaPro.title}・from your dear ${letsShaPro.provider}`
 			});
 			notification.onclick = function() {
 				window.open(document.URL);
 			};
-		} else {
-
 		}
 	}
-};
 
-function metadata(boolean) {
-	if(boolean == true) {
-		cl('.metadata h6').add('shazam--drawer');
-		cl('.metadata h6').add('shazam--animation');
-	} else if(boolean == false) {
-		cl('.metadata h6').remove('shazam--drawer');
-		cl('.metadata h6').remove('shazam--animation');
-	}
 };
 
 document.addEventListener('load', getStatus());
-document.addEventListener('load', rlStatus());
-document.addEventListener('DOMContentLoaded', shazam())
+document.addEventListener('load', getNotificationsStatus());
