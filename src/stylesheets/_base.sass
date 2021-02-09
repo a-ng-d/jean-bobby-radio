@@ -51,16 +51,16 @@ p
 
 body
 	height: 100vh
+	background: var(--radial-mask), var(--texture), url(../assets/images/jean-bobby.jpg) center center, var(--jb-blueberry)
+	background-size: 100%, auto, cover, auto
+	background-blend-mode: normal, color-dodge, overlay, normal
 	display: grid
-	grid-template-rows: auto 9.6rem 2.4rem
+	grid-template-rows: auto 96rem 24rem
 
 	#jumbotron
 		grid-row: 1
-		background: var(--radial-mask), var(--texture), url(../assets/images/jean-bobby.jpg) center center, var(--jb-blueberry)
-		background-size: 100%, auto, cover, auto
-		background-blend-mode: normal, color-dodge, overlay, normal
 		display: grid
-		grid-template-rows: 12.8rem auto 7.2rem
+		grid-template-rows: 128rem auto
 
 		header.header
 			z-index: 2
@@ -92,7 +92,7 @@ body
 
 	#player
 		grid-row: 2
-		background-color: var(--jb-white)
+		background-color: transparent
 
 	footer
 		grid-row: 3
