@@ -1,8 +1,8 @@
 // Play button
 
 .play-cta
-	width: 16.4rem
-	height: 13.6rem
+	width: 164rem
+	height: 136rem
 	place-self: center
 	position: relative
 	z-index: 1
@@ -32,7 +32,7 @@
 
 					&~.play-cta__label
 						& .play-cta__label--play span
-							transform: translateY(-6.4rem)
+							transform: translateY(-64rem)
 							opacity: 0
 
 						& .play-cta__label--pause span
@@ -48,9 +48,9 @@
 					--upper-value: 1.2
 					--medium-value: 1
 
-					--lower-value-radius: 2.24rem
-					--upper-value-radius: 1.44rem
-					--medium-value-radius: 1.6rem
+					--lower-value-radius: 22.4rem
+					--upper-value-radius: 14.4rem
+					--medium-value-radius: 16rem
 
 					animation: bouncing var(--duration) infinite
 
@@ -61,9 +61,9 @@
 					--upper-value: 1.4
 					--medium-value: 1
 
-					--lower-value-radius: 3.2rem
-					--upper-value-radius: 1.28rem
-					--medium-value-radius: 1.6rem
+					--lower-value-radius: 32rem
+					--upper-value-radius: 12.8rem
+					--medium-value-radius: 16rem
 
 					animation: bouncing var(--duration) infinite
 
@@ -81,7 +81,7 @@
 
 		&:hover
 			box-shadow: var(--levitation), var(--accent)
-			transform: scale(1.2) translateY(-1.6rem)
+			transform: scale(1.2) translateY(-16rem)
 
 			&~.play-cta__screens::before, &~.play-cta__screens::after
 				transform: scale(2)
@@ -100,8 +100,8 @@
 			opacity: .6
 
 		svg
-			width: 3.2rem
-			height: 3.2rem
+			width: 32rem
+			height: 32rem
 			margin: auto
 			fill: var(--jb-blueberry)
 
@@ -122,26 +122,26 @@
 
 		&--linear-sunset::before
 			background: var(--jb-linear-sunset)
-			top: 1.6rem
-			left: 3.2rem
+			top: 16rem
+			left: 32rem
 			z-index: -3
 			transform-origin: 100% 100%
 			--delay: .2s
 
 		&--radial-sunset::after
 			background: var(--jb-radial-sunset)
-			top: 4.0rem
-			left: -4.0rem
+			top: 40rem
+			left: -40rem
 			z-index: -2
 			transform-origin: 0% 100%
 			--delay: .2s
 
 	.play-cta__label
-		width: 60rem
-		height: 20rem
+		width: 600rem
+		height: 200rem
 		position: absolute
-		top: -22.8rem
-		left: -31.8rem
+		top: -228rem
+		left: -318rem
 		z-index: 1
 
 		.play-cta__label--play, .play-cta__label--pause
@@ -153,7 +153,7 @@
 
 		span
 			transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
-			transform: translateY(6.4rem)
+			transform: translateY(64rem)
 			opacity: 0
 			display: block
 
