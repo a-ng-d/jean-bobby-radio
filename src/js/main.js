@@ -198,6 +198,10 @@ async function shazam() {
 // Provider
 async function prozam() {
 
+	let obj;
+	const err = 'You have to log in Spotify',
+				ano = 'Mr. ¯\_(ツ)_/¯';
+
 	return await fetch(
 		`https://api.spotify.com/v1/playlists/${playlistID}/tracks?market=FR&fields=items(added_by%2C%20track(artists(name)%2C%20name))`,
 		{
@@ -208,11 +212,23 @@ async function prozam() {
 			}
 		})
 			.then(response => {
+				console.log(`${response.url}: ${response.status}`)
 				if (response.ok) {
 					return response.json()
+				} else {
+					return err
 				}
 			})
-			.then(json => matchCurrentListening(json.items))
+			.then(json => {
+				if (json != err) {
+					matchCurrentListening(json.items)
+				} else {
+					obj = {
+						provider: 'You have to log in Spotify'
+					};
+					return obj
+				}
+			})
 			.catch(error => console.error(error));
 
 	async function matchCurrentListening(datas) {
@@ -220,7 +236,11 @@ async function prozam() {
 		let result = datas.filter(data =>
 			data.track.name.includes(letsShazam.title) == true
 		);
-		return await getProvider(result[0].added_by.id)
+		if (result == []) {
+			return ano
+		} else {
+			return await getProvider(result[0].added_by.id)
+		}
 	};
 
 	async function getProvider(id) {
@@ -234,12 +254,15 @@ async function prozam() {
 				}
 			})
 				.then(response => {
+					console.log(`${response.url}: ${response.status}`)
 					if (response.ok) {
 						return response.json()
+					} else {
+						return err
 					}
 				})
 				.then(json => {
-					let obj = {
+					obj = {
 						provider: json.display_name
 					};
 					return obj
@@ -253,20 +276,19 @@ async function prozam() {
 // Whole track infos
 async function shapro() {
 
+	let obj;
+
 	const letsShazam = await shazam(),
 				letsProzam = await prozam();
 
-	if (letsProzam.provider == undefined) {
-		letsProzam.provider = '¯\_(ツ)_/¯'
-	};
-
-	let obj = {
+	obj = {
 		artist: letsShazam.artist,
 		title: letsShazam.title,
 		provider: letsProzam.provider
 	};
 
 	return obj
+	
 };
 
 async function displayTrack(bool) {
