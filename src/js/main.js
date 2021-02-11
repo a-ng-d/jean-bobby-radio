@@ -161,6 +161,8 @@ async function shazam() {
 			console.log(`${response.url}: ${response.status}`);
 			if (response.ok) {
 				return response.json()
+			} else {
+				return 'Something went wrong'
 			}
 		})
 		.then(json => getTrackTitle(json))
@@ -168,7 +170,13 @@ async function shazam() {
 
 	function getTrackTitle(datas) {
 		let obj, arr, title;
-		title = datas.icestats.source.title;
+
+		try {
+			title = datas.icestats.source.title;
+		} catch {
+			title = undefined
+		}
+
 		if (title == undefined) {
 			obj = {
 				artist: 'Here is…',
