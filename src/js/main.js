@@ -130,7 +130,7 @@ function getNotificationsStatus() {
 			}
 		})
 
-}
+};
 
 // Notifications enabler
 function enableNotifications() {
@@ -150,7 +150,7 @@ function enableNotifications() {
 			}
 		})
 
-}
+};
 
 // Get metadata (provider, artist, title)
 // Artist and title
