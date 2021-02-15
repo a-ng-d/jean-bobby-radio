@@ -1,31 +1,32 @@
 'use strict';
 
 // Require
-var gulp = require('gulp'),
+const
+	gulp = require('gulp'),
+	gutil = require('gulp-util'),
+	ftp = require('vinyl-ftp'),
+	sass = require('gulp-sass'),
+	eslint = require('gulp-eslint'),
+	beautify = require('gulp-beautify'),
 
-gutil = require( 'gulp-util' ),
+	// Load all the plugins
+	$ = require('gulp-load-plugins')({
+		pattern: ['gulp-*', 'gulp.*'],
+		replaceString: /\bgulp[\-.]/,
+		lazy: true,
+		camelize: true
+	}),
 
-ftp = require('vinyl-ftp'),
+	// Source
+	source = 'src',
 
-sass = require('gulp-sass'),
-
-// Load all the plugins
-$ = require('gulp-load-plugins')({
-	pattern: ['gulp-*', 'gulp.*'],
-	replaceString: /\bgulp[\-.]/,
-	lazy: true,
-	camelize: true
-}),
-
-// Source
-source = 'src',
-
-// Destination
-destination = 'dist';
+	// Destination
+	destination = 'dist';
 
 // Compile PUG
 gulp.task('pug', function buildHTML() {
-	return gulp.src(source + '/templates/page.pug')
+	return gulp
+		.src(source + '/templates/page.pug')
 		.pipe($.rename("index.html"))
 		.pipe($.pug({}))
 		.pipe(gulp.dest(destination))
@@ -34,39 +35,68 @@ gulp.task('pug', function buildHTML() {
 
 // Compile SCSS
 gulp.task('sass', function () {
-	return gulp.src(source + '/stylesheets/main.sass')
+	return gulp
+		.src(source + '/stylesheets/main.sass')
 		.pipe($.sass().on('error', sass.logError))
 		.pipe($.autoprefixer())
 		.pipe($.csso())
-		.pipe($.rename('main.min.css'))
+		.pipe($.rename({
+			suffix: ".min",
+    	extname: ".css"
+		}))
 		.pipe(gulp.dest(destination + '/stylesheets'))
 		.pipe($.connect.reload())
 });
 
 // Move assets
 gulp.task('img', function () {
-	return gulp.src(source + '/assets/images/*')
+	return gulp
+		.src(source + '/assets/images/*')
 		.pipe(gulp.dest(destination + '/assets/images'))
 });
 
 gulp.task('trck', function () {
-	return gulp.src(source + '/assets/sounds/*')
+	return gulp
+		.src(source + '/assets/sounds/*')
 		.pipe(gulp.dest(destination + '/assets/sounds'))
 });
 
-// Compress JS
+// Check JS
 gulp.task('js', function() {
-	return gulp.src(source + '/js/*.js')
+	return gulp
+		.src(source + '/js/*.js')
+		//.pipe(jsValidate())
+		.pipe(eslint({
+			rules:{
+        'camelcase': 1,
+        'comma-dangle': 2,
+        'quotes': 0
+    	},
+			parserOptions: {
+        'ecmaVersion': 2017
+    	},
+			env: {
+        'es6': true
+    	}
+		}))
+		.pipe(eslint.format())
+		.pipe(beautify.js())
+		.pipe($.rename({
+			suffix: ".min",
+    	extname: ".js"
+		}))
 		.pipe(gulp.dest(destination + '/js'))
 		.pipe($.connect.reload())
 });
 
 // Move the libs into dist
 gulp.task('plyr', function() {
- 	return gulp.src('node_modules/plyr/dist/plyr.min.js')
-			.pipe(gulp.dest(destination + '/js'))
-			.pipe($.connect.reload()),
-		gulp.src('node_modules/plyr/dist/plyr.css')
+ 	return gulp
+		.src('node_modules/plyr/dist/plyr.min.js')
+		.pipe(gulp.dest(destination + '/js'))
+		.pipe($.connect.reload()),
+		gulp
+			.src('node_modules/plyr/dist/plyr.css')
 			.pipe(gulp.dest(destination + '/stylesheets'))
 			.pipe($.connect.reload())
 })
@@ -105,10 +135,15 @@ gulp.task('deploy', function() {
 		destination + '/index.html'
 	]
 
-	return gulp.src(globs, {base: '.', buffer: false})
+	return gulp
+		.src(globs, {base: '.', buffer: false})
 		.pipe(conn.newer('/jean-bobby-radio'))
 		.pipe(conn.dest('/jean-bobby-radio'));
 });
 
 // Build
-gulp.task('default', gulp.series('pug', 'img', 'trck', 'js', 'sass', 'plyr', 'stream'), function() {})
+gulp.task(
+	'default',
+	gulp.series('pug', 'img', 'trck', 'js', 'sass', 'plyr', 'stream'),
+	function() {}
+)
