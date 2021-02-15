@@ -2,11 +2,10 @@
 
 // Button
 .button
-	height: var(--xlarge-size)
 	padding: 0 var(--regular-space)
-	color: var(--jb-blueberry)
-	background-color: var(--jb-white)
+	border: none
 	border-radius: var(--small-border-radius)
+	font-family: inherit
 	font-size: var(--plain-text)
 	text-decoration: none
 	transition: var(--jb-transition)
@@ -26,6 +25,16 @@
 	&:focus
 		outline: 0
 		box-shadow: var(--focus)
+
+	&--primary
+		height: var(--xlarge-size)
+		color: var(--jb-blueberry)
+		background-color: var(--jb-white)
+
+	&--secondary
+		height: 48rem
+		color: var(--jb-blueberry)
+		background-color: var(--jb-milka)
 
 // Tag
 @mixin active-tag($class, $label)
