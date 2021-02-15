@@ -183,8 +183,8 @@ async function shazam() {
 		let obj, arr, title;
 
 		try {
-			title = datas.icestats.source.title;
-		} catch {
+			title = datas.icestats.source.title
+		} catch(error) {
 			title = undefined
 		}
 
