@@ -2,21 +2,13 @@
 
 // Global
 const
-		domain = 'http://broadcaster.jean-bobby-radi.ovh:8000',
-		mount = '/jbradio',
-		streamUrl = domain + mount,
-		title = 'Jean-Bobby Radio',
-		playlistID = '65SJCvnRdfbLpyxTVCglYJ',
-		token = 'BQBYAWMcjY-euKjnMdMeZrc73Xqo_paAddNlXWtJEImk4Qp1YKIgKBYNMB0hwCKgQtt7jR6THwmknh4f8hmFSzxG-kX8t0Qr0ZBhgc1r77QAWPG73fzuvtZ9Ct2r8ZWhoobWRg',
 		freq = 10000,
-		cta = $('.play-cta__btn');
+		cta = $('.play-cta__btn'),
+		notifState = $('input[name="switch"]'),
+		playState = $('input[name="play"]');
 
 let
 	toggle = false;
-
-const
-	notificationsSt = $('input[name="switch"]'),
-	playSt = $('input[name="play"]');
 
 function $(elmt) {
 	return document.querySelector(elmt)
@@ -26,9 +18,28 @@ function cl(elmt) {
 	return $(elmt).classList
 };
 
+// Datas
+const radio = {
+	title: 'Jean-Bobby Radio',
+	url: 'http://localhost:8080'
+};
+
+const stream = {
+	domain: 'http://broadcaster.jean-bobby-radi.ovh:8000',
+	mount: '/jbradio'
+};
+
+const spotify = {
+	authUrl: 'https://accounts.spotify.com/authorize',
+	tokenUrl: 'https://accounts.spotify.com/api/token',
+	playlistId: '65SJCvnRdfbLpyxTVCglYJ',
+	clientId: '604d5e8d826c4489977f4ef0a046b19d',
+	clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2'
+};
+
 // Plyr
 const player = new Plyr('.player', {
-	title: title,
+	title: radio.title,
 	controls: [
 		'mute',
 		'volume',
@@ -38,11 +49,11 @@ const player = new Plyr('.player', {
 
 player.source = {
 	type: 'audio',
-	title: 'Place du Village - Spotify',
+	title: radio.title,
 	sources: [
 		{
-			src: streamUrl,
-			type: 'audio/mpeg',
+			src: stream.domain + stream.mount,
+			type: 'audio/mpeg'
 		}
 	]
 };
@@ -69,7 +80,7 @@ function playJB() {
 // Streaming status
 function getStatus() {
 
-	fetch(streamUrl)
+	fetch(stream.domain + stream.mount)
 		.then(response => {
 			console.log(`${response.url}: ${response.status}`);
 			if (response.status === 200) {
@@ -105,7 +116,7 @@ function offAir() {
 	cl('.play-cta__btn').add('play-cta__btn--unactive');
 
 	cl('input[name="play"]').add('input--unactive');
-	playSt.checked = false;
+	playState.checked = false;
 
 	displayTrack(false);
 
@@ -139,13 +150,13 @@ function enableNotifications() {
 		.then(permission => {
 			if (permission.state !== 'granted') {
 				Notification.requestPermission();
-				notificationsSt.checked = false
+				notifState.checked = false
 			}
 			permission.onchange = function() {
 				if (permission.state == 'granted') {
-					notificationsSt.checked = true
+					notifState.checked = true
 				} else {
-					notificationsSt.checked = false
+					notifState.checked = false
 				}
 			}
 		})
@@ -156,7 +167,7 @@ function enableNotifications() {
 // Artist and title
 async function shazam() {
 
-	return await fetch(`${domain}/status-json.xsl`)
+	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
 			console.log(`${response.url}: ${response.status}`);
 			if (response.ok) {
@@ -203,12 +214,12 @@ async function prozam() {
 				ano = 'Mr. ¯\_(ツ)_/¯';
 
 	return await fetch(
-		`https://api.spotify.com/v1/playlists/${playlistID}/tracks?market=FR&fields=items(added_by%2C%20track(artists(name)%2C%20name))`,
+		`https://api.spotify.com/v1/playlists/${spotify.playlistId}/tracks?market=FR&fields=items(added_by%2C%20track(artists(name)%2C%20name))`,
 		{
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${spotify.token}`
 			}
 		})
 			.then(response => {
@@ -250,7 +261,7 @@ async function prozam() {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${token}`
+					'Authorization': `Bearer ${spotify.token}`
 				}
 			})
 				.then(response => {
@@ -288,7 +299,7 @@ async function shapro() {
 	};
 
 	return obj
-	
+
 };
 
 async function displayTrack(bool) {
