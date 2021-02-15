@@ -63,13 +63,13 @@ function playJB() {
 
 	if (toggle) {
 		player.pause();
-		playSt.checked = false;
+		playState.checked = false;
 		displayTrack(false);
 
 		toggle = false;
 	} else {
 		player.play();
-		playSt.checked = true;
+		playState.checked = true;
 		displayTrack(true);
 
 		toggle = true;
@@ -311,7 +311,7 @@ async function displayTrack(bool) {
 		$('.artist p').innerHTML = letsShaPro.artist;
 		$('.title p').innerHTML = letsShaPro.title;
 
-		if (notificationsSt.checked == true) {
+		if (notifState.checked == true) {
 			var notification = new Notification('Now playing…', {
 				icon: '../assets/images/jean-bobby-icon.png',
 				body: `${letsShaPro.artist}・${letsShaPro.title}・from your dear ${letsShaPro.provider}`
