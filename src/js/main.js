@@ -4,8 +4,8 @@
 const
 		freq = 10000,
 		cta = $('.play-cta__btn'),
-		notifState = $('input[name="switch"]'),
-		playState = $('input[name="play"]');
+		notifState = $('input[name=\'switch\']'),
+		playState = $('input[name=\'play\']');
 
 let
 	toggle = false;
@@ -19,23 +19,30 @@ function cl(elmt) {
 };
 
 // Datas
-const radio = {
-	title: 'Jean-Bobby Radio',
-	url: 'http://localhost:8080'
-};
+const
+	radio = {
+		title: 'Jean-Bobby Radio',
+		url: 'http://localhost:8080'
+	},
 
-const stream = {
-	domain: 'http://broadcaster.jean-bobby-radi.ovh:8000',
-	mount: '/jbradio'
-};
+	stream = {
+		domain: 'http://broadcaster.jean-bobby-radi.ovh:8000',
+		mount: '/jbradio'
+	},
 
-const spotify = {
-	authUrl: 'https://accounts.spotify.com/authorize',
-	tokenUrl: 'https://accounts.spotify.com/api/token',
-	playlistId: '65SJCvnRdfbLpyxTVCglYJ',
-	clientId: '604d5e8d826c4489977f4ef0a046b19d',
-	clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2'
-};
+	spotify = {
+		authUrl: 'https://accounts.spotify.com/authorize',
+		tokenUrl: 'https://accounts.spotify.com/api/token',
+		playlistId: '65SJCvnRdfbLpyxTVCglYJ',
+		clientId: '604d5e8d826c4489977f4ef0a046b19d',
+		clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2'
+	},
+
+	shazam = {
+		artist: 'François Juno',
+		title: 'L\'an 1999',
+		provider: 'Mr. ¯\_(ツ)_/¯'
+	}
 
 // Plyr
 const player = new Plyr('.player', {
@@ -65,12 +72,16 @@ function playJB() {
 		player.pause();
 		playState.checked = false;
 		displayTrack(false);
+		cl('.track').add('track--paused')
+		cl('.track').remove('track--played')
 
 		toggle = false;
 	} else {
 		player.play();
 		playState.checked = true;
 		displayTrack(true);
+		cl('.track').remove('track--paused')
+		cl('.track').add('track--played')
 
 		toggle = true;
 	}
@@ -102,7 +113,7 @@ function onAir() {
 
 	cl('.play-cta__btn').remove('play-cta__btn--unactive');
 
-	cl('input[name="play"]').remove('input--unactive');
+	cl('input[name=\'play\']').remove('input--unactive');
 
 };
 
@@ -115,7 +126,7 @@ function offAir() {
 
 	cl('.play-cta__btn').add('play-cta__btn--unactive');
 
-	cl('input[name="play"]').add('input--unactive');
+	cl('input[name=\'play\']').add('input--unactive');
 	playState.checked = false;
 
 	displayTrack(false);
@@ -163,120 +174,215 @@ function enableNotifications() {
 
 };
 
+// Spotify authentication token
+function getSpotifyToken() {
+
+	const params = new URLSearchParams(window.location.search);
+	const code = params.get('code');
+
+	const headers = {
+		'Content-type': 'application/x-www-form-urlencoded'
+	};
+	const formUrlEncoded = new URLSearchParams({
+		'client_id': spotify.clientId,
+		'client_secret': spotify.clientSecret,
+		'grant_type': 'authorization_code',
+		'code': code,
+		'redirect_uri': radio.url
+	});
+
+	if (code != null && code != 'access_denied') {
+		fetch(
+			spotify.tokenUrl,
+			{
+				method: 'POST',
+				headers: headers,
+				body: formUrlEncoded
+			}
+		)
+			.then(response => {
+				console.log(`${response.url}: ${response.status}`);
+				if (response.status != 401 && response.status != 400) {
+					return response.json()
+				} else {
+					return signIntoSpotify()
+				}
+			})
+			.then(json => {
+				if (json != undefined) {
+					return localStorage.setItem('$spotify_access', JSON.stringify(json))
+				}
+			})
+			.catch(error => console.error(error))
+	} else {
+		return signIntoSpotify()
+	}
+
+};
+
+function refreshSpotifyToken() {
+
+	const access = JSON.parse(localStorage.getItem('$spotify_access')),
+				headers = {
+					'Content-type': 'application/x-www-form-urlencoded',
+					'Authorization': `Basic ${btoa(`${spotify.clientId}:${spotify.clientSecret}`)}`
+				},
+				formUrlEncoded = new URLSearchParams({
+					'grant_type': 'refresh_token'
+				});
+
+	try {
+		formUrlEncoded.append('refresh_token', access.refresh_token)
+	} catch (error) {
+		formUrlEncoded.append('refresh_token', null)
+	}
+
+	fetch(
+		spotify.tokenUrl,
+		{
+			method: 'POST',
+			headers: headers,
+			body: formUrlEncoded
+		}
+	)
+		.then(response => {
+			console.log(`${response.url}: ${response.status}`);
+			if (response.status != 401 && response.status != 400) {
+				return response.json()
+			} else {
+				return signIntoSpotify()
+			}
+		})
+		.then(json => {
+			if (json != undefined) {
+				localStorage.setItem('$spotify_access', JSON.stringify(json));
+			}
+		})
+		.catch(error => console.error(error))
+
+};
+
+function signIntoSpotify() {
+	const signInButton = '<button class=\'button button--secondary\' onclick=\'jumpIntoSpotify()\'>Sign into Spotify to get provider</button>';
+	$('.provider p').innerHTML = signInButton
+};
+
+function jumpIntoSpotify() {
+	window.open(`${spotify.authUrl}?client_id=${spotify.clientId}&response_type=code&redirect_uri=${encodeURIComponent(radio.url)}`)
+};
+
 // Get metadata (provider, artist, title)
 // Artist and title
-async function shazam() {
+async function sha() {
 
 	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
 			console.log(`${response.url}: ${response.status}`);
-			if (response.ok) {
-				return response.json()
-			} else {
-				return 'Something went wrong'
-			}
+			return response.json()
 		})
 		.then(json => getTrackTitle(json))
 		.catch(error => console.error(error));
 
 	function getTrackTitle(datas) {
-		let obj, arr, title;
+
+		let arr, title;
 
 		try {
 			title = datas.icestats.source.title
 		} catch(error) {
 			title = undefined
-		}
-
-		if (title == undefined) {
-			obj = {
-				artist: 'Here is…',
-				title: 'an advertising break…'
-			}
-		} else {
-			arr = title.split(' - ');
-			obj = {
-				artist: arr[0],
-				title: arr[1]
-			}
 		};
 
-		return obj
+		if (title == undefined || title == ' / ') {
+			shazam.artist = 'Here is…';
+			shazam.title = 'an advertising break…'
+		} else {
+			arr = title.split(' / ');
+			shazam.artist = arr[0];
+			shazam.title = arr[1]
+		};
+
+		return shazam
+
 	}
 
 };
 
 // Provider
-async function prozam() {
+async function zam() {
 
-	let obj;
-	const err = 'You have to log in Spotify',
-				ano = 'Mr. ¯\_(ツ)_/¯';
+	const ano = 'Mr. ¯\_(ツ)_/¯',
+				access = JSON.parse(localStorage.getItem('$spotify_access')),
+				headers = {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				};
+
+	try {
+		headers.Authorization = `Bearer ${access.access_token}`
+	} catch (error) {
+		headers.Authorization = null
+	}
 
 	return await fetch(
 		`https://api.spotify.com/v1/playlists/${spotify.playlistId}/tracks?market=FR&fields=items(added_by%2C%20track(artists(name)%2C%20name))`,
 		{
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${spotify.token}`
-			}
+			headers: headers
 		})
 			.then(response => {
 				console.log(`${response.url}: ${response.status}`)
-				if (response.ok) {
+				if (response.status != 401 && response.status != 400) {
 					return response.json()
 				} else {
-					return err
+					return refreshSpotifyToken()
 				}
 			})
 			.then(json => {
-				if (json != err) {
-					matchCurrentListening(json.items)
+				if (json != undefined) {
+					return matchCurrentListening(json.items)
 				} else {
-					obj = {
-						provider: 'You have to log in Spotify'
-					};
-					return obj
+					shazam.provider = ano;
+					return shazam
 				}
 			})
 			.catch(error => console.error(error));
 
 	async function matchCurrentListening(datas) {
-		const letsShazam = await shazam();
-		let result = datas.filter(data =>
-			data.track.name.includes(letsShazam.title) == true
+
+		await sha();
+		let results = datas.filter(data =>
+			data.track.name.includes(shazam.title) == true
 		);
-		if (result == []) {
-			return ano
+
+		if (results == undefined || results.length == 0) {
+			shazam.provider = ano;
+			return shazam
 		} else {
-			return await getProvider(result[0].added_by.id)
+			return await getProvider(results[0].added_by.id)
 		}
+
 	};
 
 	async function getProvider(id) {
+
 		return await fetch(
 			`https://api.spotify.com/v1/users/${id}`,
 			{
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${spotify.token}`
-				}
+				headers: headers
 			})
 				.then(response => {
 					console.log(`${response.url}: ${response.status}`)
-					if (response.ok) {
+					if (response.status != 401) {
 						return response.json()
 					} else {
-						return err
+						return refreshSpotifyToken()
 					}
 				})
 				.then(json => {
-					obj = {
-						provider: json.display_name
-					};
-					return obj
+					if (json != undefined) {
+						shazam.provider = json.display_name;
+						return shazam
+					}
 				})
 				.catch(error => console.error(error))
 
@@ -285,36 +391,28 @@ async function prozam() {
 };
 
 // Whole track infos
-async function shapro() {
+async function letsShazam() {
 
-	let obj;
+	await sha();
+	await zam();
 
-	const letsShazam = await shazam(),
-				letsProzam = await prozam();
-
-	obj = {
-		artist: letsShazam.artist,
-		title: letsShazam.title,
-		provider: letsProzam.provider
-	};
-
-	return obj
+	return shazam
 
 };
 
 async function displayTrack(bool) {
 
 	if (bool) {
-		const letsShaPro = await shapro();
+		await letsShazam();
 
-		$('.provider p').innerHTML = `${letsShaPro.provider} presents…`;
-		$('.artist p').innerHTML = letsShaPro.artist;
-		$('.title p').innerHTML = letsShaPro.title;
+		$('.provider p').innerHTML = `${shazam.provider} presents…`;
+		$('.artist p').innerHTML = shazam.artist;
+		$('.title p').innerHTML = shazam.title;
 
 		if (notifState.checked == true) {
 			var notification = new Notification('Now playing…', {
 				icon: '../assets/images/jean-bobby-icon.png',
-				body: `${letsShaPro.artist}・${letsShaPro.title}・from your dear ${letsShaPro.provider}`
+				body: `${shazam.artist}・${shazam.title}・from your dear ${shazam.provider}`
 			});
 			notification.onclick = function() {
 				window.open(document.URL);
@@ -326,3 +424,4 @@ async function displayTrack(bool) {
 
 document.addEventListener('load', getStatus());
 document.addEventListener('load', getNotificationsStatus());
+document.addEventListener('load', getSpotifyToken())
