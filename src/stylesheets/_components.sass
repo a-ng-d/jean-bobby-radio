@@ -9,6 +9,7 @@
 	font-size: var(--plain-text)
 	text-decoration: none
 	transition: var(--jb-transition)
+	cursor: pointer
 	display: flex
 	align-items: center
 
@@ -69,12 +70,11 @@
 // Switch
 .switch
 	height: var(--xlarge-size)
-	border: 1rem solid var(--jb-white)
-	padding: 0 var(--regular-space)
+	border: 2rem solid var(--jb-white)
 	border-radius: var(--small-border-radius)
 	cursor: pointer
 	display: flex
-	align-items: center
+	align-items: stretch
 
 	&--unactive
 		pointer-events: none
@@ -82,12 +82,12 @@
 
 	.switch_label
 		font-size: var(--plain-text)
+		padding: 20rem 0 20rem var(--regular-space)
 		margin: 0 var(--small-space) 0 0
 		cursor: pointer
 
 	.switch_component
-		width: 48rem
-		height: var(--large-size)
+		width: var(--xlarge-space)
 		position: relative
 
 		.switch_spot
@@ -120,16 +120,17 @@
 			background: var(--jb-white)
 			border-radius: 12rem
 			position: absolute
-			top: 4rem
+			top: calc(50% - 12rem)
 			left: 4rem
 			z-index: 2
 			transition: var(--jb-transition)
 
 		.switch_indicator
-			width: 100%
-			height: 100%
+			width: 48rem
+			height: var(--large-size)
 			background: var(--jb-white-2)
 			border-radius: var(--regular-border-radius)
 			position: absolute
 			z-index: 1
+			top: calc(50% - 16rem)
 			transition: var(--jb-transition)
