@@ -71,19 +71,15 @@ function playJB() {
 	if (toggle) {
 		player.pause();
 		playState.checked = false;
-		displayTrack(false);
-		cl('.track').add('track--paused')
-		cl('.track').remove('track--played')
+		cl('.track').replace('track--end', 'track--start');
 
-		toggle = false;
+		toggle = false
 	} else {
 		player.play();
 		playState.checked = true;
-		displayTrack(true);
-		cl('.track').remove('track--paused')
-		cl('.track').add('track--played')
+		cl('.track').replace('track--start', 'track--end');
 
-		toggle = true;
+		toggle = true
 	}
 
 };

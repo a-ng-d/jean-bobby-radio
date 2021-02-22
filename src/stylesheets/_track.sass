@@ -7,6 +7,21 @@
   bottom: var(--large-space)
   right: var(--large-space)
 
+  & > *
+    transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
+
+  @for $i from 1 through 3
+    & > *:nth-child(0n + #{$i})
+      transition-delay: ($i * .1s) - .1s
+
+  &--start > *
+    transform: translateX(64rem)
+    opacity: 0
+
+  &--end > *
+    transform: translateX(0)
+    opacity: 2
+
   div + div
     margin: var(--large-space) 0 0
 
