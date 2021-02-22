@@ -18,7 +18,7 @@ function cl(elmt) {
 	return $(elmt).classList
 };
 
-// Datas
+// Datas models
 const
 	radio = {
 		title: 'Jean-Bobby Radio',
@@ -44,7 +44,8 @@ const
 		provider: 'Mr. ¯\_(ツ)_/¯'
 	}
 
-// Plyr
+// Player
+/// Plyr
 const player = new Plyr('.player', {
 	title: radio.title,
 	controls: [
@@ -65,7 +66,7 @@ player.source = {
 	]
 };
 
-// Play button toggle
+/// Play button
 function playJB() {
 
 	if (toggle) {
@@ -84,7 +85,8 @@ function playJB() {
 
 };
 
-// Streaming status
+// Broadcaster
+/// Streaming status
 function getStatus() {
 
 	fetch(stream.domain + stream.mount)
@@ -131,7 +133,8 @@ function offAir() {
 
 };
 
-// Notifications status
+// Notifications
+/// Notifications status
 function getNotificationsStatus() {
 
 	navigator.permissions.query({name: 'notifications'})
@@ -150,7 +153,7 @@ function getNotificationsStatus() {
 
 };
 
-// Notifications enabler
+/// Notifications enabler
 function enableNotifications() {
 
 	navigator.permissions.query({name: 'notifications'})
@@ -267,8 +270,8 @@ function jumpIntoSpotify() {
 	window.open(`${spotify.authUrl}?client_id=${spotify.clientId}&response_type=code&redirect_uri=${encodeURIComponent(radio.url)}`)
 };
 
-// Get metadata (provider, artist, title)
-// Artist and title
+// Get metadata (artist, title, provider)
+/// Artist and title
 async function sha() {
 
 	return await fetch(`${stream.domain}/status-json.xsl`)
@@ -304,7 +307,7 @@ async function sha() {
 
 };
 
-// Provider
+/// Provider
 async function zam() {
 
 	const ano = 'Mr. ¯\_(ツ)_/¯',
@@ -386,7 +389,7 @@ async function zam() {
 
 };
 
-// Whole track infos
+// Track infos
 async function letsShazam() {
 
 	await sha();
@@ -418,6 +421,7 @@ async function displayTrack(bool) {
 
 };
 
+// Starting script
 document.addEventListener('load', getStatus());
 document.addEventListener('load', getNotificationsStatus());
 document.addEventListener('load', getSpotifyToken())
