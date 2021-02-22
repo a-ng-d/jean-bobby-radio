@@ -35,13 +35,14 @@ const
 		tokenUrl: 'https://accounts.spotify.com/api/token',
 		playlistId: '65SJCvnRdfbLpyxTVCglYJ',
 		clientId: '604d5e8d826c4489977f4ef0a046b19d',
-		clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2'
+		clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2',
+		cache: '$spotify_access'
 	},
 
 	shazam = {
 		artist: 'François Juno',
 		title: 'L\'an 1999',
-		provider: 'Mr. ¯\_(ツ)_/¯'
+		provider: 'Mr. ¯\\_(ツ)_/¯'
 	}
 
 // Player
@@ -106,12 +107,11 @@ function onAir() {
 
 	console.log('On air');
 
-	cl('.status').remove('status--off-air');
-	cl('.status').add('status--on-air');
+	cl('.status').replace('status--off-air', 'status--on-air');
 
 	cl('.play-cta__btn').remove('play-cta__btn--unactive');
 
-	cl('input[name=\'play\']').remove('input--unactive');
+	cl('input[name=\'play\']').remove('input--unactive')
 
 };
 
@@ -119,17 +119,16 @@ function offAir() {
 
 	console.log('Off air');
 
-	cl('.status').remove('status--on-air')
-	cl('.status').add('status--off-air');
+	cl('.status').replace('status--on-air', 'status--off-air')
 
 	cl('.play-cta__btn').add('play-cta__btn--unactive');
 
 	cl('input[name=\'play\']').add('input--unactive');
 	playState.checked = false;
 
-	displayTrack(false);
+	cl('.track').replace('track--end', 'track--start');
 
-	toggle = false;
+	toggle = false
 
 };
 
@@ -209,7 +208,8 @@ function getSpotifyToken() {
 			})
 			.then(json => {
 				if (json != undefined) {
-					return localStorage.setItem('$spotify_access', JSON.stringify(json))
+					localStorage.setItem(spotify.cache, JSON.stringify(json));
+					window.close()
 				}
 			})
 			.catch(error => console.error(error))
@@ -249,6 +249,7 @@ function refreshSpotifyToken() {
 			if (response.status != 401 && response.status != 400) {
 				return response.json()
 			} else {
+				localStorage.removeItem(spotify.cache);
 				return signIntoSpotify()
 			}
 		})
@@ -399,29 +400,33 @@ async function letsShazam() {
 
 };
 
-async function displayTrack(bool) {
+async function updateTrack() {
 
-	if (bool) {
-		await letsShazam();
+	await letsShazam();
 
-		$('.provider p').innerHTML = `${shazam.provider} presents…`;
-		$('.artist p').innerHTML = shazam.artist;
-		$('.title p').innerHTML = shazam.title;
+	$('.provider p').innerHTML = `${shazam.provider} presents…`;
+	$('.artist p').innerHTML = shazam.artist;
+	$('.title p').innerHTML = shazam.title;
 
-		if (notifState.checked == true) {
-			var notification = new Notification('Now playing…', {
-				icon: '../assets/images/jean-bobby-icon.png',
-				body: `${shazam.artist}・${shazam.title}・from your dear ${shazam.provider}`
-			});
-			notification.onclick = function() {
-				window.open(document.URL);
-			};
-		}
+	if (notifState.checked == true) {
+		var notification = new Notification('Now playing…', {
+			icon: '../assets/images/jean-bobby-icon.png',
+			body: `${shazam.artist}・${shazam.title}・from your dear ${shazam.provider}`
+		});
+		notification.onclick = function() {
+			window.open(document.URL);
+		};
 	}
 
-};
+}
 
 // Starting script
 document.addEventListener('load', getStatus());
 document.addEventListener('load', getNotificationsStatus());
-document.addEventListener('load', getSpotifyToken())
+document.addEventListener('load', getSpotifyToken());
+document.addEventListener('load', updateTrack());
+window.addEventListener('storage', () => {
+	if (localStorage.getItem(spotify.cache)) {
+		updateTrack()
+	}
+})
