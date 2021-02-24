@@ -27,7 +27,8 @@ const
 
 	stream = {
 		domain: 'http://broadcaster.jean-bobby-radi.ovh:8000',
-		mount: '/jbradio'
+		mount: '/jbradio',
+		status: '/status-json.xsl'
 	},
 
 	spotify = {
@@ -40,9 +41,9 @@ const
 	},
 
 	shazam = {
-		artist: 'François Juno',
-		title: 'L\'an 1999',
-		provider: 'Mr. ¯\\_(ツ)_/¯'
+		artist: null,
+		title: null,
+		provider: null
 	}
 
 // Player
@@ -94,9 +95,9 @@ function getStatus() {
 		.then(response => {
 			console.log(`${response.url}: ${response.status}`);
 			if (response.status === 200) {
-				onAir()
+				return onAir()
 			} else {
-				offAir()
+				return offAir()
 			}
 		})
 		.catch(error => offAir());
@@ -105,7 +106,7 @@ function getStatus() {
 
 function onAir() {
 
-	console.log('On air');
+	console.log('ON AIR');
 
 	cl('.status').replace('status--off-air', 'status--on-air');
 
@@ -117,7 +118,7 @@ function onAir() {
 
 function offAir() {
 
-	console.log('Off air');
+	console.log('OFF AIR');
 
 	cl('.status').replace('status--on-air', 'status--off-air')
 
@@ -311,7 +312,7 @@ async function sha() {
 /// Provider
 async function zam() {
 
-	const ano = 'Mr. ¯\_(ツ)_/¯',
+	const ano = 'Mr. ¯\\_(ツ)_/¯',
 				access = JSON.parse(localStorage.getItem('$spotify_access')),
 				headers = {
 					'Accept': 'application/json',
@@ -414,7 +415,7 @@ async function updateTrack() {
 			body: `${shazam.artist}・${shazam.title}・from your dear ${shazam.provider}`
 		});
 		notification.onclick = function() {
-			window.open(document.URL);
+			window.open(document.URL)
 		};
 	}
 
@@ -424,7 +425,7 @@ async function updateTrack() {
 document.addEventListener('load', getStatus());
 document.addEventListener('load', getNotificationsStatus());
 document.addEventListener('load', getSpotifyToken());
-document.addEventListener('load', updateTrack());
+document.addEventListener('ready', updateTrack());
 window.addEventListener('storage', () => {
 	if (localStorage.getItem(spotify.cache)) {
 		updateTrack()
