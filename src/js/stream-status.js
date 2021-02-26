@@ -1,5 +1,6 @@
 import { cl, playState, toggle } from './global';
 import { stream } from './data';
+import { player } from './player';
 
 export default function getStatus() {
 
@@ -38,6 +39,7 @@ export default function getStatus() {
 
   	cl('input[name=\'play\']').add('input--unactive');
   	playState.checked = false;
+		player.stop();
 
   	cl('.track').replace('track--end', 'track--start');
 
