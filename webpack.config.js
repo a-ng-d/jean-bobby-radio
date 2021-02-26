@@ -10,7 +10,7 @@ const config = {
     jbradio: './src/jbradio.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'static'),
     filename: '[name].min.js',
     assetModuleFilename: 'images/[name][ext]'
   },
@@ -18,7 +18,7 @@ const config = {
     port: 8080,
     compress: true,
     contentBase: [
-      path.join(__dirname, 'dist'),
+      path.join(__dirname, 'static'),
       path.join(__dirname, '/assets/images'),
     ],
     publicPath: '/assets/'
