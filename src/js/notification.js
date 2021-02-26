@@ -30,10 +30,8 @@ export function enableNotifications() {
 			permission.onchange = function() {
 				if (permission.state == 'granted') {
 					notifState.checked = true;
-					console.log('ok')
 				} else {
 					notifState.checked = false;
-					console.log('ko')
 				}
 			}
 		})
