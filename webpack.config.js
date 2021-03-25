@@ -73,7 +73,7 @@ const
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
-    config.module.rules.push(sassLoader, pugLoader);
+    config.module.rules.push(sassLoader, assetLoader, pugLoader);
     config.plugins.push(pluginCss, pluginPug)
   }
   if (argv.mode === 'production') {
