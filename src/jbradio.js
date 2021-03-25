@@ -31,6 +31,9 @@ import { getSpotifyToken, refreshSpotifyToken, signIntoSpotify } from './js/spot
 /// Shazam!
 import letsShazam from './js/shazam';
 
+// Lottie Animation
+import { jbIsFlying } from './js/animation';
+
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
 
