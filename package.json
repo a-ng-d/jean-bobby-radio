@@ -1,10 +1,15 @@
 {
 	"name": "jean-bobby-radio",
-	"version": "1.0.0",
-	"description": "iObeya kitchen radio",
-	"main": "index.js",
+	"version": "3.0.0",
+	"description": "iObeya web radio",
+	"main": "jbradio.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "webpack --mode=production",
+		"start": "webpack serve --mode=production",
+		"watch": "webpack --watch --mode=production",
+		"build:dev": "webpack --mode=development",
+		"start:dev": "webpack serve --mode=development",
+		"watch:dev": "webpack --watch --mode=development"
 	},
 	"keywords": [
 		"radio",
@@ -15,25 +20,24 @@
 	"author": "Aurélien Grimaud",
 	"license": "ISC",
 	"dependencies": {
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^7.0.1",
-		"gulp-beautify": "^3.0.0",
-		"gulp-cli": "^2.2.0",
-		"gulp-connect": "^5.7.0",
-		"gulp-csso": "^4.0.1",
-		"gulp-eslint": "^6.0.0",
-		"gulp-load-plugins": "^2.0.6",
-		"gulp-pug": "^4.0.1",
-		"gulp-rename": "^2.0.0",
-		"gulp-sass": "^4.1.0",
-		"gulp-uglify": "^3.0.2",
-		"gulp-util": "^3.0.8",
-		"gulp-watch": "^5.0.1",
+		"autoprefixer": "^10.2.4",
+		"css-loader": "^5.1.0",
+		"css-minimizer-webpack-plugin": "^1.2.0",
+		"html-webpack-plugin": "^5.2.0",
 		"icecast-stack": "^0.3.0",
+		"mini-css-extract-plugin": "^1.3.9",
 		"plyr": "^3.6.4",
-		"vinyl-ftp": "^0.6.1"
+		"postcss": "^8.2.6",
+		"postcss-loader": "^5.0.0",
+		"pug": "^3.0.0",
+		"pug-loader": "^2.4.0",
+		"sass": "^1.32.8",
+		"sass-loader": "^11.0.1",
+		"style-loader": "^2.0.0",
+		"uglifyjs-webpack-plugin": "^2.2.0",
+		"webpack": "^5.24.2",
+		"webpack-cli": "^4.5.0",
+		"webpack-dev-server": "^3.11.2"
 	},
-	"devDependencies": {
-		"cors": "^2.8.5"
-	}
+	"devDependencies": {}
 }

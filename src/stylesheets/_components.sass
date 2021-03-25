@@ -1,6 +1,6 @@
 // Components
 
-// Button
+/// Button
 .button
 	padding: 0 var(--regular-space)
 	border: none
@@ -10,6 +10,7 @@
 	text-decoration: none
 	transition: var(--jb-transition)
 	cursor: pointer
+	position: relative
 	display: flex
 	align-items: center
 
@@ -37,7 +38,14 @@
 		color: var(--jb-blueberry)
 		background-color: var(--jb-milka)
 
-// Tag
+		a
+			width: 100%
+			height: 100%
+			position: absolute
+			top: 0
+			left: 0
+
+/// Tag
 @mixin active-tag($class, $label)
 	&--#{$class}::before
 		content: $label
@@ -67,7 +75,7 @@
 		padding: var(--small-space)
 
 
-// Switch
+/// Switch
 .switch
 	height: var(--xlarge-size)
 	border: 2rem solid var(--jb-white)
