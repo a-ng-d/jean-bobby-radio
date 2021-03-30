@@ -1,5 +1,5 @@
 import Plyr from 'plyr';
-import { playState, cl, $, toggle, notifState } from './global';
+import { playState, cl, $, io, notifState } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
 
@@ -27,18 +27,18 @@ player.source = {
 // Play button
 export function playJB() {
 
-	if (toggle) {
+	if (io.getState) {
 		player.pause();
 		playState.checked = false;
 		cl('.track').replace('track--end', 'track--start');
 
-		toggle = false
+		io.setState = false
 	} else {
 		player.play();
 		playState.checked = true;
 		cl('.track').replace('track--start', 'track--end');
 
-		toggle = true
+		io.setState = true
 	}
 
 };

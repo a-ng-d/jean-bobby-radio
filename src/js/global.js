@@ -5,7 +5,17 @@ export const
 		playState = $('input[name=\'play\']');
 
 export let
-	toggle = false;
+	io = {
+		state: false,
+
+		get getState() {
+			return this.state
+		},
+
+		set setState(newState) {
+			return this.state = newState
+		}
+	};
 
 export function $(elmt) {
 	return document.querySelector(elmt)
