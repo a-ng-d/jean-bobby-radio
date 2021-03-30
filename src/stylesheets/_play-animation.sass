@@ -1,0 +1,58 @@
+// Looping animation
+
+.play__animation
+  width: 1080rem
+  height: 1080rem
+  position: absolute
+  left: calc(50% - 540rem)
+  top: calc(50% - 540rem)
+  z-index: 1
+
+  & #jb-is-flying
+
+    // Init
+    & g[clip-path="url(#__lottie_element_7)"]
+      transform-origin: 100% 80%
+
+    & g[clip-path="url(#__lottie_element_7)"],
+    & g[clip-path="url(#__lottie_element_30)"] g:nth-child(1) > g path:nth-child(1),
+    & g[clip-path="url(#__lottie_element_68)"] g:nth-child(1) > g path:nth-child(1)
+        transition-duration: 1s
+        transition-property: all
+        transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1)
+
+  &--start
+
+    & #jb-is-flying
+
+      // Super Jean-Bobby
+      & g[clip-path="url(#__lottie_element_7)"]
+          transform: scale(0)
+          transition-delay: 0
+
+      // Front circle
+      & g[clip-path="url(#__lottie_element_30)"] g:nth-child(1) > g path:nth-child(1)
+          fill: var(--jb-white-1)
+          transition-delay: .4s
+
+      // Back circle
+      & g[clip-path="url(#__lottie_element_68)"] g:nth-child(1) > g path:nth-child(1)
+          fill: var(--jb-white-1)
+          transition-delay: .2s
+
+  &--end
+
+    & #jb-is-flying
+
+      // Super Jean-Bobby
+      & g[clip-path="url(#__lottie_element_7)"]
+          transform: scale(1)
+          transition-delay: 0
+
+      // Front circle
+      & g[clip-path="url(#__lottie_element_30)"] g:nth-child(1) > g path:nth-child(1)
+          transition-delay: .2s
+
+      // Back circle
+      & g[clip-path="url(#__lottie_element_68)"] g:nth-child(1) > g path:nth-child(1)
+          transition-delay: .4s
