@@ -10,13 +10,13 @@ import png from './assets/images/jean-bobby-icon.png';
 import svg from './assets/images/mono-sheet.svg';
 
 // Global
-import { playBtn, notifBtn, spotifyBtn, playState, notifState, toggle, $, cl } from './js/global';
+import { playBtn, notifBtn } from './js/global';
 
 // Data models
 import { radio, stream, spotify, shazam } from './js/data';
 
 // Player
-import { player, updateTrack, playJB } from './js/player.js';
+import { updateTrack, playJB } from './js/player';
 
 // Stream status
 import getStatus from './js/stream-status';
@@ -26,13 +26,10 @@ import getStatus from './js/stream-status';
 import { getNotificationsStatus, enableNotifications } from './js/notification';
 
 /// Spotify token
-import { getSpotifyToken, refreshSpotifyToken, signIntoSpotify } from './js/spotify';
+import { getSpotifyToken } from './js/spotify';
 
 /// Shazam!
 import letsShazam from './js/shazam';
-
-// Lottie Animation
-import { jbIsFlying } from './js/animation';
 
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
@@ -45,4 +42,4 @@ window.addEventListener('storage', () => {
 	if (localStorage.getItem(spotify.cache)) {
 		updateTrack()
 	}
-})
+});
