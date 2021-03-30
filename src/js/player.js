@@ -1,7 +1,8 @@
 import Plyr from 'plyr';
-import { playState, cl, $, toggle, notifState } from './global';
+import { playState, cl, $, io, notifState } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
+import { jbIsFlying, startAnimation, stopAnimation } from './animation';
 
 // Set up the html5 player
 export const player = new Plyr('.player', {
@@ -27,18 +28,20 @@ player.source = {
 // Play button
 export function playJB() {
 
-	if (toggle) {
+	if (io.getState) {
 		player.pause();
+		stopAnimation();
 		playState.checked = false;
 		cl('.track').replace('track--end', 'track--start');
 
-		toggle = false
+		io.setState = false
 	} else {
 		player.play();
+		startAnimation();
 		playState.checked = true;
 		cl('.track').replace('track--start', 'track--end');
 
-		toggle = true
+		io.setState = true
 	}
 
 };

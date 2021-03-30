@@ -1,4 +1,4 @@
-import { cl, playState, toggle } from './global';
+import { cl, playState, io } from './global';
 import { stream } from './data';
 import { player } from './player';
 
@@ -43,7 +43,7 @@ export default function getStatus() {
 
   	cl('.track').replace('track--end', 'track--start');
 
-  	toggle = false
+  	io.setState = false
 
   };
 

@@ -1,11 +1,11 @@
 // Play button
 
 .play-cta
-	width: 164rem
-	height: 136rem
+	width: 160rem
+	height: 160rem
 	place-self: center
 	position: relative
-	z-index: 1
+	z-index: 3
 
 	input[type='checkbox']
 		width: 100%
@@ -74,7 +74,7 @@
 		width: 100%
 		height: 100%
 		background-color: var(--jb-white)
-		border-radius: var(--regular-border-radius)
+		border-radius: 80rem
 		outline: 0
 		transition: var(--jb-transition)
 		transition-delay: var(--delay)
@@ -140,8 +140,8 @@
 		width: 600rem
 		height: 200rem
 		position: absolute
-		top: -228rem
-		left: -318rem
+		top: -264rem
+		left: -412rem
 		z-index: 1
 
 		.play-cta__label--play, .play-cta__label--pause
@@ -155,7 +155,7 @@
 			transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
 			transform: translateY(64rem)
 			opacity: 0
-			display: block
+			text-shadow: var(--lightvitation)
 
 			@for $i from 1 through 6
 				&:nth-child(0n + #{$i})
