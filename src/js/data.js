@@ -1,7 +1,7 @@
 export const
 	radio = {
 		title: 'Jean-Bobby Radio',
-		url: 'http://localhost:8080'
+		url: 'https://involtag.github.io/jean-bobby-radio/static/'
 	},
 
 	stream = {
