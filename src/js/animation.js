@@ -17,6 +17,10 @@ const
       }
     });
 
+export function patchJbIsFlying() {
+  $("#jb-is-flying:nth-child(2)").remove()
+}
+
 export function startAnimation() {
   trigger = false;
   jbIsFlying.setSpeed(1);

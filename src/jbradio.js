@@ -31,6 +31,9 @@ import { getSpotifyToken } from './js/spotify';
 /// Shazam!
 import letsShazam from './js/shazam';
 
+// Patch double lottie animation
+import { patchJbIsFlying } from './js/animation';
+
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
 
@@ -38,6 +41,7 @@ document.addEventListener('ready', getStatus);
 document.addEventListener('ready', getSpotifyToken);
 document.addEventListener('ready', getNotificationsStatus);
 document.addEventListener('ready', updateTrack);
+document.addEventListener('ready', patchJbIsFlying);
 window.addEventListener('storage', () => {
 	if (localStorage.getItem(spotify.cache)) {
 		updateTrack()
