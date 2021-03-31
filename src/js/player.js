@@ -2,7 +2,7 @@ import Plyr from 'plyr';
 import { playState, cl, $, io, notifState } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
-import { jbIsFlying, startAnimation, stopAnimation } from './animation';
+import { startAnimation, stopAnimation } from './animation';
 
 // Set up the html5 player
 export const player = new Plyr('.player', {

@@ -4,7 +4,7 @@ import * as data from '../assets/animation/data.json';
 
 let trigger = false;
 
-export const
+const
   jbIsFlying =
     lottie.loadAnimation({
     	container: $('.play__animation'),
@@ -13,14 +13,14 @@ export const
      	autoplay: false,
      	animationData: data,
       rendererSettings: {
-      id: 'jb-is-flying'
+        id: 'jb-is-flying'
       }
     });
 
 export function startAnimation() {
   trigger = false;
   jbIsFlying.setSpeed(1);
-  jbIsFlying.goToAndPlay(0, true)
+  jbIsFlying.goToAndPlay(0, true);
   cl('.play__animation').replace('play__animation--start', 'play__animation--end')
 };
 
