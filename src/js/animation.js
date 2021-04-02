@@ -18,7 +18,7 @@ const
     });
 
 export function patchJbIsFlying() {
-  $("#jb-is-flying:nth-child(2)").remove()
+  $('#jb-is-flying:nth-child(2)').remove()
 }
 
 export function startAnimation() {
