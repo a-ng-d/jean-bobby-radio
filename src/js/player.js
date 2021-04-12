@@ -63,7 +63,7 @@ export async function updateTrack() {
 
 	if (notifState.checked == true) {
 		var notification = new Notification('Now playing…', {
-			icon: '../assets/images/jean-bobby-icon.png',
+			icon: './images/jean-bobby-icon.png',
 			body: `${shazam.artist}・${shazam.title}・from your dear ${shazam.provider}`
 		});
 		notification.onclick = function() {

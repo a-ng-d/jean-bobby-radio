@@ -7,6 +7,7 @@ import css from '../node_modules/plyr/dist/plyr.css'
 
 /// Bundle assets
 import png from './assets/images/jean-bobby-icon.png';
+import pttrn from './assets/images/pattern.png';
 import svg from './assets/images/mono-sheet.svg';
 
 // Global
