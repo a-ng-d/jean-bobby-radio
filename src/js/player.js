@@ -28,20 +28,26 @@ player.source = {
 // Play button
 export function playJB() {
 
+	let u;
+
 	if (io.getState) {
-		player.pause();
-		stopAnimation();
-		playState.checked = false;
+		player.pause(); // player
+		stopAnimation(); // animation loop
+		playState.checked = false; // button state
+		// now playing
 		cl('.track').replace('track--end', 'track--start');
+		clearInterval(u);
 
-		io.setState = false
+		io.setState = false // switch
 	} else {
-		player.play();
-		startAnimation();
-		playState.checked = true;
+		player.play(); // player
+		startAnimation(); // animation loop
+		playState.checked = true; // button state
+		// now playing
 		cl('.track').replace('track--start', 'track--end');
+		u = setInterval(updateTrack, 60000);
 
-		io.setState = true
+		io.setState = true // switch
 	}
 
 };
