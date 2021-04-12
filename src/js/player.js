@@ -45,7 +45,7 @@ export function playJB() {
 		playState.checked = true; // button state
 		// now playing
 		cl('.track').replace('track--start', 'track--end');
-		u = setInterval(updateTrack, 60000);
+		u = setInterval(updateTrack, 180000);
 
 		io.setState = true // switch
 	}
