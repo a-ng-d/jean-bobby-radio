@@ -2,49 +2,33 @@ import { cl, playState, io } from './global';
 import { stream } from './data';
 import { player } from './player';
 
-export default function getStatus() {
+export function onAir() {
 
-	fetch(stream.domain + stream.mount)
-		.then(response => {
-			console.log(`${response.url}: ${response.status}`);
-			if (response.status === 200) {
-				return onAir()
-			} else {
-				return offAir()
-			}
-		})
-		.catch(error => offAir());
+	console.log('ON AIR');
 
-  // Everything rules and the player is ok to be played
-  function onAir() {
+	cl('.status').replace('status--off-air', 'status--on-air');
 
-  	console.log('ON AIR');
+	cl('.play-cta__btn').remove('play-cta__btn--unactive');
 
-  	cl('.status').replace('status--off-air', 'status--on-air');
+	cl('input[name=\'play\']').remove('input--unactive')
 
-  	cl('.play-cta__btn').remove('play-cta__btn--unactive');
+};
 
-  	cl('input[name=\'play\']').remove('input--unactive')
+// The streaming music is down or off
+export function offAir() {
 
-  };
+	console.log('OFF AIR');
 
-  // The streaming music is down or off
-  function offAir() {
+	cl('.status').replace('status--on-air', 'status--off-air')
 
-  	console.log('OFF AIR');
+	cl('.play-cta__btn').add('play-cta__btn--unactive');
 
-  	cl('.status').replace('status--on-air', 'status--off-air')
+	cl('input[name=\'play\']').add('input--unactive');
+	playState.checked = false;
+	player.stop();
 
-  	cl('.play-cta__btn').add('play-cta__btn--unactive');
+	cl('.track').replace('track--end', 'track--start');
 
-  	cl('input[name=\'play\']').add('input--unactive');
-  	playState.checked = false;
-		player.stop();
-
-  	cl('.track').replace('track--end', 'track--start');
-
-  	io.setState = false
-
-  };
+	io.setState = false
 
 };

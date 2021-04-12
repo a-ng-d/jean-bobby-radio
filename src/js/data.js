@@ -5,7 +5,7 @@ export const
 	},
 
 	stream = {
-		domain: 'http://broadcaster.jean-bobby.radio.fm:8000',
+		domain: 'http://live.jean-bobby.radio.fm:8000',
 		mount: '/jbradio',
 		status: '/status-json.xsl'
 	},
