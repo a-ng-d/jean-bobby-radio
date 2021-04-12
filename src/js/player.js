@@ -2,7 +2,7 @@ import Plyr from 'plyr';
 import { playState, cl, $, io, notifState } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
-import { jbIsFlying, startAnimation, stopAnimation } from './animation';
+import { startAnimation, stopAnimation } from './animation';
 
 // Set up the html5 player
 export const player = new Plyr('.player', {
@@ -28,20 +28,26 @@ player.source = {
 // Play button
 export function playJB() {
 
+	let u;
+
 	if (io.getState) {
-		player.pause();
-		stopAnimation();
-		playState.checked = false;
+		player.pause(); // player
+		stopAnimation(); // animation loop
+		playState.checked = false; // button state
+		// now playing
 		cl('.track').replace('track--end', 'track--start');
+		clearInterval(u);
 
-		io.setState = false
+		io.setState = false // switch
 	} else {
-		player.play();
-		startAnimation();
-		playState.checked = true;
+		player.play(); // player
+		startAnimation(); // animation loop
+		playState.checked = true; // button state
+		// now playing
 		cl('.track').replace('track--start', 'track--end');
+		u = setInterval(updateTrack, 60000);
 
-		io.setState = true
+		io.setState = true // switch
 	}
 
 };

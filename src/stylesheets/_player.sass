@@ -61,6 +61,10 @@
 				&:active
 					box-shadow: var(--levitation), var(--pressed)
 
+					&::-webkit-slider-thumb
+						background-color: var(--jb-salmon)
+						box-shadow: var(--levitation)
+
 				&::-webkit-slider-runnable-track
 					height: 100%
 					background-color: var(--jb-white-2)
@@ -77,10 +81,22 @@
 					border-radius: var(--regular-border-radius)
 
 				&::-webkit-slider-thumb
-					visibility: hidden
+					width: var(--regular-size)
+					height: calc(100% + var(--regular-size))
+					background-color: var(--jb-white)
+					border-radius: var(--small-size)
+					margin-top: -8rem
+					transition: var(--jb-transition)
+					box-shadow: var(--heavivation)
 					cursor: col-resize
 				&::-moz-range-thumb
-					visibility: hidden
+					width: var(--regular-size)
+					height: calc(100% + var(--regular-size))
+					background-color: var(--jb-white)
+					border-radius: var(--small-size)
+					margin-top: -8rem
+					transition: var(--jb-transition)
+					box-shadow: var(--heavivation)
 					cursor: col-resize
 
 				&.plyr__tab-focus::-webkit-slider-runnable-track
