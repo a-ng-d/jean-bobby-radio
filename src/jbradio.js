@@ -18,9 +18,6 @@ import { radio, stream, spotify, shazam } from './js/data';
 // Player
 import { updateTrack, playJB } from './js/player';
 
-// Stream status
-import getStatus from './js/stream-status';
-
 // Now playing track
 /// Notifications
 import { getNotificationsStatus, enableNotifications } from './js/notification';
@@ -37,7 +34,6 @@ import { patchJbIsFlying } from './js/animation';
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
 
-document.addEventListener('ready', getStatus);
 document.addEventListener('ready', getSpotifyToken);
 document.addEventListener('ready', getNotificationsStatus);
 document.addEventListener('ready', updateTrack);

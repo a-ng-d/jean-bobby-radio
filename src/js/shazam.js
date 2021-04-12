@@ -1,5 +1,6 @@
 import { spotify, stream, shazam } from './data';
 import { refreshSpotifyToken } from './spotify';
+import { offAir, onAir } from './stream-status';
 
 // Get the artist, the title and the provider from Spotify
 export default async function letsShazam() {
@@ -26,22 +27,24 @@ async function sha() {
 
 		let arr, title;
 
-		try {
-			title = datas.icestats.source.title
-		} catch(error) {
-			title = undefined
-		};
-
-		if (title == undefined || title == ' / ') {
-			shazam.artist = 'Here is…';
-			shazam.title = 'an advertising break…'
+		if (datas.icestats.source == undefined) {
+			offAir()
 		} else {
-			arr = title.split(' / ');
-			shazam.artist = arr[0];
-			shazam.title = arr[1]
-		};
+			title = datas.icestats.source.title
 
-		return shazam
+			if (title == ' / ') {
+				shazam.artist = 'Jean-Bobby Radio';
+				shazam.title = 'All over the World'
+			} else {
+				arr = title.split(' / ');
+				shazam.artist = arr[0];
+				shazam.title = arr[1]
+			};
+
+			onAir();
+
+			return shazam
+		}
 
 	}
 
