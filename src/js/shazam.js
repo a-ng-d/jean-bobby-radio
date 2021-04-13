@@ -18,7 +18,12 @@ async function sha() {
 	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
 			console.log(`${response.url}: ${response.status}`);
-			return response.json()
+			if(response.ok) {
+				return response.json()
+			} else {
+				return offAir()
+			}
+
 		})
 		.then(json => getTrackTitle(json))
 		.catch(error => console.error(error));
