@@ -1,11 +1,11 @@
 // Looping animation
 
 .play__animation
-  width: 1080rem
-  height: 1080rem
+  height: calc(100% - var(--large-space))
   position: absolute
-  left: calc(50% - 540rem)
-  top: calc(50% - 540rem)
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
   z-index: 1
 
   & #jb-is-flying
