@@ -55,11 +55,12 @@ const
     devServer: {
       port: 8080,
       compress: true,
+      hot: false,
+      liveReload: true,
+      clientLogLevel: 'silent',
       contentBase: [
-        path.join(__dirname, 'static'),
-        path.join(__dirname, '/assets/images'),
+        path.join(__dirname, 'static')
       ],
-      publicPath: '/assets/'
     },
     plugins: [],
     module: {
