@@ -1,6 +1,6 @@
 export const
 		playBtn = $('.play-cta__btn'),
-		notifBtn = $('.switch'),
+		notifBtn = $('.switch--now-playing'),
 		notifState = $('input[name=\'switch\']'),
 		playState = $('input[name=\'play\']');
 
