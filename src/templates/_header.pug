@@ -1,6 +1,7 @@
 //- Header
 
-- var playlist = 'Contribute to the "Place du Village" playlist'
+- var playlist = 'Share your songs'
+- var jingle = 'Upload your jingles'
 
 header.header
 
@@ -10,6 +11,7 @@ header.header
 
 	nav.header__nav
 		a.button.button--primary(href='https://open.spotify.com/playlist/65SJCvnRdfbLpyxTVCglYJ' target='_blank')= playlist
+		a.button.button--primary(href='https://drive.google.com/drive/folders/1AGmM7T8Y0XSuyYZP97HZteQlG9s7A5zw?usp=sharing' target='_blank')= jingle
 		include _switch.pug
 		
 		.tag.status.status--off-air
