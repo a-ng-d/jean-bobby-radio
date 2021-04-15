@@ -31,7 +31,7 @@ export function playJB() {
 	let u;
 
 	if (io.getState) {
-		player.pause(); // player
+		player.stop(); // player
 		stopAnimation(); // animation loop
 		playState.checked = false; // button state
 		// now playing
