@@ -5,6 +5,7 @@ extends _init.pug
 block content
 	
 	include ../assets/images/mono-sheet.svg
+	include _components.pug
 
 	#jumbotron
 		include _header.pug
@@ -15,6 +16,9 @@ block content
 
 	#player
 		audio.player
+		.more-options
+			+magic-card('#bullhorn')(class='feedback')
+				iframe(src='https://chilipepper.io/form/insane-darkbrown-guajillo-bc4bef56-91d0-46cd-9e64-b4cf0c27cf5e')
 
 	footer
 		p.p--center.p--sunset
