@@ -4,7 +4,7 @@
 .button
 	padding: 0 var(--regular-space)
 	border: none
-	border-radius: var(--small-border-radius)
+	border-radius: var(--regular-border-radius)
 	font-family: inherit
 	font-size: var(--plain-text)
 	text-decoration: none
@@ -13,6 +13,12 @@
 	position: relative
 	display: flex
 	align-items: center
+
+	svg
+		width: var(--regular-space)
+		height: var(--regular-size)
+		fill: var(--jb-blueberry)
+		margin: auto
 
 	&:hover
 		background: var(--jb-linear-sunset)
@@ -29,6 +35,7 @@
 		box-shadow: var(--focus)
 
 	&--primary
+		min-width: var(--xlarge-size)
 		height: var(--xlarge-size)
 		color: var(--jb-blueberry)
 		background-color: var(--jb-white)
@@ -79,7 +86,7 @@
 .switch
 	height: var(--xlarge-size)
 	border: 2rem solid var(--jb-white)
-	border-radius: var(--small-border-radius)
+	border-radius: var(--regular-border-radius)
 	cursor: pointer
 	display: flex
 	align-items: stretch
@@ -123,8 +130,8 @@
 				box-shadow: var(--focus)
 
 		.switch_knob
-			width: 24rem
-			height: 24rem
+			width: var(--medium-size)
+			height: var(--medium-size)
 			background: var(--jb-white)
 			border-radius: 12rem
 			position: absolute
@@ -142,3 +149,23 @@
 			z-index: 1
 			top: calc(50% - 16rem)
 			transition: var(--jb-transition)
+
+/// Magic card
+.mcard
+	position: relative
+
+	.mcard__content
+		width: 400rem
+		height: 432rem
+		padding: var(--medium-space)
+		background: var(--jb-white)
+		border-radius: var(--regular-border-radius)
+		position: absolute
+		top: -16rem
+		right: 0
+		transform: translateY(-100%)
+		z-index: 1
+
+		iframe
+			width: 100%
+			height: 100%

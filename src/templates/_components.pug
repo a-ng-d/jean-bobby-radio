@@ -1,0 +1,15 @@
+//- Component templates
+
+mixin icon-button(svg)
+  .button.button--primary(class!=attributes.class)
+    svg.icon--not-pressed(
+      role='presentation'
+			focusable='false'
+		)
+      use(xlink:href=svg)
+
+mixin magic-card(svg)
+  .mcard(class!=attributes.class)
+    .mcard__content
+      block
+    +icon-button(svg)
