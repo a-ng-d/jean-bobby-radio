@@ -1,15 +1,21 @@
 //- Component templates
 
-mixin icon-button(svg)
-  .button.button--primary(class!=attributes.class)
+mixin icon-button(iconON, iconOFF)
+  button.button.button--primary.button__toggle(class!=attributes.class)
+    input.button__toggle__spot(type='checkbox')
+    svg.icon--pressed(
+      role='presentation'
+			focusable='false'
+		)
+      use(xlink:href=iconOFF)
     svg.icon--not-pressed(
       role='presentation'
 			focusable='false'
 		)
-      use(xlink:href=svg)
+      use(xlink:href=iconON)
 
-mixin magic-card(svg)
-  .mcard(class!=attributes.class)
-    .mcard__content
+mixin infos-card(iconON, iconOFF)
+  .icard.icard--collapsed(class!=attributes.class)
+    .icard__content
       block
-    +icon-button(svg)
+    +icon-button(iconON, iconOFF)
