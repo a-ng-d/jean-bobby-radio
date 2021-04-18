@@ -132,17 +132,17 @@
 		pointer-events: none
 		opacity: .6
 
-	.switch_label
+	.switch__label
 		font-size: var(--plain-text)
 		padding: 20rem 0 20rem var(--regular-space)
 		margin: 0 var(--small-space) 0 0
 		cursor: pointer
 
-	.switch_component
+	.switch__component
 		width: var(--xlarge-space)
 		position: relative
 
-		.switch_spot
+		.switch__spot
 			width: 100%
 			height: 100%
 			position: absolute
@@ -152,21 +152,21 @@
 			margin: 0
 			cursor: pointer
 
-			&:checked~.switch_knob
+			&:checked~.switch__knob
 				left: 20rem
 				box-shadow: var(--levitation)
 
-			&:checked~.switch_indicator
+			&:checked~.switch__indicator
 				--duration: 4s
 
 				background: var(--jb-linear-sunset)
 				background-size: 800%, 100%
 				animation: shiny-sunset var(--duration) infinite var(--ease-peps)
 
-			&:focus~.switch_indicator
+			&:focus~.switch__indicator
 				box-shadow: var(--focus)
 
-		.switch_knob
+		.switch__knob
 			width: var(--medium-size)
 			height: var(--medium-size)
 			background: var(--jb-white)
@@ -177,7 +177,7 @@
 			z-index: 2
 			transition: var(--jb-transition)
 
-		.switch_indicator
+		.switch__indicator
 			width: 48rem
 			height: var(--large-size)
 			background: var(--jb-white-2)
