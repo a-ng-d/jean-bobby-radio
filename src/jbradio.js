@@ -10,11 +10,11 @@ import png from './assets/images/jean-bobby-icon.png';
 import pttrn from './assets/images/pattern.png';
 import svg from './assets/images/mono-sheet.svg';
 
-// Global
-import { playBtn, notifBtn } from './js/global';
-
 // Data models
 import { radio, stream, spotify, shazam } from './js/data';
+
+// Components behavior
+import { playBtn, notifBtn, toggleBtn, infosCard, refreshForm } from './js/components';
 
 // Player
 import { updateTrack, playJB } from './js/player';
@@ -34,6 +34,9 @@ import { patchJbIsFlying } from './js/animation';
 
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
+toggleBtn.addEventListener('click', (e) => {
+	return infosCard(e.path[2], refreshForm)
+});
 
 document.addEventListener('ready', getSpotifyToken);
 document.addEventListener('ready', getNotificationsStatus);

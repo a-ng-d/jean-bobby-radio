@@ -1,8 +1,9 @@
 import Plyr from 'plyr';
-import { playState, cl, $, io, notifState } from './global';
+import { cl, $, io } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
 import { startAnimation, stopAnimation } from './animation';
+import { playState, notifState } from './components';
 
 // Set up the html5 player
 export const player = new Plyr('.player', {

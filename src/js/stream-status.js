@@ -1,6 +1,7 @@
-import { cl, playState, io } from './global';
+import { cl, io } from './global';
 import { stream } from './data';
 import { player } from './player';
+import { playState } from './components';
 
 export function onAir() {
 

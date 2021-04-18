@@ -1,4 +1,5 @@
-import { cl, notifState } from './global';
+import { cl } from './global';
+import { notifState } from './components';
 
 export function getNotificationsStatus() {
 
@@ -18,7 +19,7 @@ export function getNotificationsStatus() {
 
 };
 
-/// Notifications enabler
+// Notifications enabler
 export function enableNotifications() {
 
 	navigator.permissions.query({name: 'notifications'})
