@@ -15,6 +15,10 @@ export function $(elmt) {
 	return document.querySelector(elmt)
 };
 
+export function each$(elmt) {
+	return document.querySelectorAll(elmt)
+};
+
 export function cl(elmt) {
 	return $(elmt).classList
 }
