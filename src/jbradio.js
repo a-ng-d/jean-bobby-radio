@@ -32,11 +32,15 @@ import letsShazam from './js/shazam';
 // Patch double lottie animation
 import { patchJbIsFlying } from './js/animation';
 
+// Events
 playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
-toggleBtn.addEventListener('click', (e) => {
-	return infosCard(e.path[2], refreshForm)
-});
+toggleBtn.forEach((btn) => {
+	btn.addEventListener('click',infosCard)
+})
+/*toggleBtn.addEventListener('click', () => {
+	return //infosCard(e.path[2], refreshForm)
+});*/
 
 document.addEventListener('ready', getSpotifyToken);
 document.addEventListener('ready', getNotificationsStatus);
