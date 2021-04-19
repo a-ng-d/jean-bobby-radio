@@ -1,4 +1,12 @@
 // Options (feedback and details)
 
 .more-options
+  display: flex
   padding: var(--regular-space)
+
+  & > *
+    margin: 0 var(--small-space)
+  & > *:nth-child(1)
+    margin: 0 var(--small-space) 0 0
+  & > *:nth-last-child(1)
+    margin: 0 0 0 var(--small-space)
