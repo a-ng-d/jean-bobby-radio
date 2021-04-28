@@ -15,7 +15,7 @@ export const
 		tokenUrl: 'https://accounts.spotify.com/api/token',
 		playlistId: '65SJCvnRdfbLpyxTVCglYJ',
 		clientId: '604d5e8d826c4489977f4ef0a046b19d',
-		clientSecret: 'd7f885def89e4d408b6ea88c9bf67ab2',
+		clientSecret: null,
 		cache: '$spotify_access'
 	},
 
