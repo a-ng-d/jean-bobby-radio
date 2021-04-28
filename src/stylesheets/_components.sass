@@ -86,9 +86,6 @@
 					transform: rotateZ(180deg)
 					opacity: 0
 
-
-
-
 /// Tag
 @mixin active-tag($class, $label)
 	&--#{$class}::before
@@ -104,11 +101,17 @@
 		color: var(--jb-white-4)
 		background: var(--jb-white-2)
 
-@mixin regular-tag($class, $label)
+@mixin light-tag($class, $label)
 	&--#{$class}::before
 		content: $label
 		color: var(--jb-blueberry)
 		background: var(--jb-white)
+
+@mixin dark-tag($class, $label)
+	&--#{$class}::before
+		content: $label
+		color: var(--jb-white)
+		background: var(--jb-blueberry)
 
 .tag
 
@@ -117,7 +120,6 @@
 		border-radius: var(--small-border-radius)
 		background: var(--jb-white)
 		padding: var(--small-space)
-
 
 /// Switch
 .switch
@@ -187,35 +189,46 @@
 			top: calc(50% - 16rem)
 			transition: var(--jb-transition)
 
-/// Magic card
+/// Infos card
 .icard
 	position: relative
 
 	&--collapsed
 		.icard__content
 			transform: translateY(-90%)
+			top: 0
 			opacity: 0
 			visibility: hidden
 
 	&--expanded
 		.icard__content
-			transform: translateY(-100%)
+			top: -16rem
 			opacity: 1
 			visibility: visible
 
 	.icard__content
 		width: 400rem
-		height: 432rem
+		min-height: 432rem
+		max-height: 832rem
+		overflow: scroll
 		padding: var(--medium-space)
 		background: var(--jb-white)
 		border-radius: var(--regular-border-radius)
 		box-shadow: var(--levitation)
 		position: absolute
-		top: -16rem
+		transform: translateY(-100%)
 		right: 0
 		z-index: 1
 		transition: var(--jb-transition)
 
 		iframe
 			width: 100%
-			height: 100%
+			height: 412rem
+
+/// Divider
+.divider
+	width: 100%
+	height: 2rem
+	background-color: var(--jb-blueberry-2)
+	margin: var(--medium-space) 0
+	border-radius: 1rem
