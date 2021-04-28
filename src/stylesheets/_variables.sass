@@ -3,13 +3,15 @@
 \:root
 
 	/// Typography
+	--max-font-size: 160rem
+	--min-font-size: 12rem
 	--font-ref: 6.25%
-	--xlarge-body: 160rem
-	--large-body: calc(var(--xlarge-body) - var(--plain-text))
-	--medium-body: calc(var(--large-body) - var(--plain-text))
-	--small-body: calc(var(--medium-body) - var(--plain-text))
-	--xsmall-body: calc(var(--small-body) - var(--plain-text))
-	--xxsmall-body: calc(var(--xsmall-body) - var(--plain-text))
+	--xlarge-body: var(--max-font-size)
+	--large-body: calc(var(--max-font-size) - (2 * var(--min-font-size)))
+	--medium-body: calc(var(--max-font-size) - (2 * var(--min-font-size)))
+	--small-body: calc(var(--max-font-size) - (8 * var(--min-font-size)))
+	--xsmall-body: calc(var(--max-font-size) - (10 * var(--min-font-size)))
+	--xxsmall-body: calc(var(--max-font-size) - (12 * var(--min-font-size)))
 
 	--plain-text: 16rem
 	--small-plain-text: 12rem
