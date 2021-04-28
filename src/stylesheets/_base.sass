@@ -13,7 +13,10 @@ html, body
 	box-sizing: border-box
 
 p
-	font-size: var(--small-plain-text)
+	font-size: var(--plain-text)
+
+	& + p
+		margin: var(--regular-space) 0 0 0
 
 	&.p--center
 		text-align: center
@@ -27,6 +30,9 @@ p
 		-webkit-text-fill-color: transparent
 		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
 
+	&.p--dark
+		color: var(--jb-blueberry)
+
 	&.p--large-label
 		font-size: calc(var(--plain-text) * 4)
 		font-weight: 700
@@ -35,6 +41,32 @@ p
 		font-size: calc(var(--plain-text) * 2)
 		font-weight: 500
 
+a
+	font-size: var(--plain-text)
+	color: var(--jb-milka)
+	transition: var(--jb-transition)
+
+	&.a--inline:hover
+		color: var(--jb-salmon)
+
+ul
+
+	li + li
+		margin: var(--regular-space) 0 0 0
+
+//@for $i from 1 through 6
+	$result: (128 / $i) * 1rem
+	article h#{$i}
+		margin: 0 0 $result 0
+
+article
+
+	section
+		& > *
+			margin: var(--regular-space) 0 0 0
+
+		& > *:nth-child(1)
+			margin: 0
 
 body
 	height: 100vh
@@ -42,7 +74,7 @@ body
 	background-size: 100%, auto, auto
 	background-blend-mode: normal, color-dodge, normal
 	display: grid
-	grid-template-rows: auto 96rem 24rem
+	grid-template-rows: auto 96rem
 
 	#jumbotron
 		grid-row: 1
@@ -62,6 +94,3 @@ body
 		grid-row: 2
 		background-color: transparent
 		display: flex
-
-	footer
-		grid-row: 3
