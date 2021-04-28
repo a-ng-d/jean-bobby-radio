@@ -12,7 +12,7 @@ export const
 export function infosCard(event) {
 
 	const card = event.path[2];
-	const target = event.target;
+	const btn = event.target;
 
   if (card != undefined) {
     if (toggle) {
@@ -24,31 +24,48 @@ export function infosCard(event) {
 
 	function closingRules(event) {
 
-		const className = event.target.className;
+		const path = event.path;
+		const target = event.target;
+		let isCardContent = false;
+		let ctn = 0;
 
-		if (typeof className != 'string') {
-			return close()
-		} else if (!className.match('icard__content') && event.target != target) {
-			return close()
-		}
+		path.forEach((value) => {
+
+			const className = value.className
+			ctn++;
+
+			if (className === 'icard__content' || target === btn) {
+				isCardContent = true
+			};
+
+			if (ctn === path.length) {
+
+				if (!isCardContent) {
+					return close()
+				} else {
+					return
+				}
+
+			}
+
+		})
 
 	};
 
 	function open() {
 		card.classList.replace('icard--collapsed', 'icard--expanded');
 		window.addEventListener('click', closingRules, true);
+		if (card.className.match('feedback')) {
+			$('iframe').src = $('iframe').src
+		}
 		toggle = true
 	};
 
 	function close() {
 		card.classList.replace('icard--expanded', 'icard--collapsed');
 		window.removeEventListener('click', closingRules, true)
-		target.checked = false;
+		btn.checked = false;
 		toggle = false
 	}
 
-};
-
-export function refreshForm() {
-  $('iframe').src = $('iframe').src
 }

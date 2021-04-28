@@ -14,7 +14,7 @@ import svg from './assets/images/mono-sheet.svg';
 import { radio, stream, spotify, shazam } from './js/data';
 
 // Components behavior
-import { playBtn, notifBtn, toggleBtn, infosCard, refreshForm } from './js/components';
+import { playBtn, notifBtn, toggleBtn, infosCard } from './js/components';
 
 // Player
 import { updateTrack, playJB } from './js/player';
@@ -37,10 +37,7 @@ playBtn.addEventListener('click', playJB);
 notifBtn.addEventListener('click', enableNotifications);
 toggleBtn.forEach((btn) => {
 	btn.addEventListener('click',infosCard)
-})
-/*toggleBtn.addEventListener('click', () => {
-	return //infosCard(e.path[2], refreshForm)
-});*/
+});
 
 document.addEventListener('ready', getSpotifyToken);
 document.addEventListener('ready', getNotificationsStatus);
