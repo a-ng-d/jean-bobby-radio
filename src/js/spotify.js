@@ -1,5 +1,15 @@
 import { $ } from './global';
 import { spotify, radio } from './data';
+import { updateTrack } from './player';
+
+// Events
+export const
+ tokenEvent = document.addEventListener('ready', getSpotifyToken),
+ storageEvent = window.addEventListener('storage', () => {
+		if (localStorage.getItem(spotify.cache)) {
+			updateTrack()
+		}
+	});
 
 // Get OAuth2 token by sending the query code from the URL and store it into local storage
 export function getSpotifyToken() {
@@ -93,7 +103,7 @@ export function refreshSpotifyToken() {
 };
 
 // Display a log in button to exchange the query code for a token
-export function signIntoSpotify() {
+function signIntoSpotify() {
 	const signInButton = `<button class=\'spotify__btn button button--secondary\'>
 													<a href=\'${spotify.authUrl}?client_id=${spotify.clientId}&response_type=code&redirect_uri=${encodeURIComponent(radio.url)}\' target=\'_blank\'></a>
 													Sign into Spotify to get provider

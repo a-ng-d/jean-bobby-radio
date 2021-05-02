@@ -2,6 +2,7 @@ import { $, each$ } from './global';
 
 let toggle = false;
 
+// Elements
 export const
 		playBtn = $('.play-cta__btn'),
 		notifBtn = $('.switch--now-playing'),
@@ -9,7 +10,15 @@ export const
 		playState = $('input[name=\'play\']'),
     toggleBtn = each$('.button__toggle');
 
-export function infosCard(event) {
+// Events
+export const
+	toggleBtnEvent =
+		toggleBtn.forEach((btn) => {
+			btn.addEventListener('click', infosCard)
+		});
+
+// Infos Card
+function infosCard(event) {
 
 	const card = event.path[2];
 	const btn = event.target;

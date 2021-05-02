@@ -4,6 +4,10 @@ import * as data from '../assets/animation/data.json';
 
 let trigger = false;
 
+// Events
+export const
+  patchEvent = document.addEventListener('ready', patchJbIsFlying);
+
 const
   jbIsFlying =
     lottie.loadAnimation({
@@ -17,7 +21,7 @@ const
       }
     });
 
-export function patchJbIsFlying() {
+function patchJbIsFlying() {
   $('#jb-is-flying:nth-child(2)').remove()
 }
 

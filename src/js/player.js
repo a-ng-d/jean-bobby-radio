@@ -3,7 +3,11 @@ import { cl, $, io } from './global';
 import { radio, stream, shazam } from './data';
 import letsShazam from './shazam';
 import { startAnimation, stopAnimation } from './animation';
-import { playState, notifState } from './components';
+import { playState, notifState, playBtn } from './components';
+
+// Events
+export const
+  trackEvent = document.addEventListener('ready', updateTrack);
 
 // Set up the html5 player
 export const player = new Plyr('.player', {
@@ -25,6 +29,10 @@ player.source = {
 		}
 	]
 };
+
+// Events
+export const
+	playBtnEvent = playBtn.addEventListener('click', playJB);
 
 // Play button
 export function playJB() {

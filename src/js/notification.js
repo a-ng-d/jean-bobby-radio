@@ -1,7 +1,12 @@
 import { cl } from './global';
-import { notifState } from './components';
+import { notifBtn } from './components';
 
-export function getNotificationsStatus() {
+// Events
+export const
+	  notifBtnEvent = notifBtn.addEventListener('click', enableNotifications),
+		notifEvent = document.addEventListener('ready', getNotificationsStatus);
+
+function getNotificationsStatus() {
 
 	navigator.permissions.query({name: 'notifications'})
 		.then(permission => {
@@ -20,7 +25,7 @@ export function getNotificationsStatus() {
 };
 
 // Notifications enabler
-export function enableNotifications() {
+function enableNotifications() {
 
 	navigator.permissions.query({name: 'notifications'})
 		.then(permission => {
