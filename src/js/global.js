@@ -22,3 +22,7 @@ export function each$(elmt) {
 export function cl(elmt) {
 	return $(elmt).classList
 }
+
+export function css(elem, property) {
+	return window.getComputedStyle($(elem))[property]
+}
