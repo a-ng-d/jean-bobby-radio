@@ -19,7 +19,7 @@
 		background-size: 800%, 100%
 		box-shadow: var(--levitation), var(--accent)
 		transform: translateY(-8rem)
-		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
+		animation: shiny-sunset var(--running) infinite var(--ease-peps) forwards
 
 	&:active
 		box-shadow: var(--levitation), var(--pressed)
@@ -159,11 +159,11 @@
 				box-shadow: var(--levitation)
 
 			&:checked~.switch__indicator
-				--duration: 4s
+				--running: 4s
 
 				background: var(--jb-linear-sunset)
 				background-size: 800%, 100%
-				animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+				animation: shiny-sunset var(--running) infinite var(--ease-peps)
 
 			&:focus~.switch__indicator
 				box-shadow: var(--focus)
