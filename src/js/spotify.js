@@ -4,7 +4,7 @@ import { updateTrack } from './player';
 
 // Events
 export const
- tokenEvent = document.addEventListener('ready', getSpotifyToken),
+ tokenEvent = document.addEventListener('DOMContentLoaded', getSpotifyToken),
  storageEvent = window.addEventListener('storage', () => {
 		if (localStorage.getItem(spotify.cache)) {
 			updateTrack()

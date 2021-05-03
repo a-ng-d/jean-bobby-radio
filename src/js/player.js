@@ -7,7 +7,7 @@ import { playState, notifState, playBtn } from './components';
 
 // Events
 export const
-  trackEvent = document.addEventListener('ready', updateTrack);
+  trackEvent = document.addEventListener('DOMContentLoaded', updateTrack);
 
 // Set up the html5 player
 export const player = new Plyr('.player', {
