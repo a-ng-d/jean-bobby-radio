@@ -17,12 +17,12 @@ async function sha() {
 
 	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
-			console.log(`${response.url}: ${response.status}`);
 			if(response.ok) {
 				return response.json()
 			} else {
 				return offAir()
 			}
+			// console.log(`${response.url}: ${response.status}`); // debug
 
 		})
 		.then(json => getTrackTitle(json))
@@ -77,7 +77,7 @@ async function zam() {
 			headers: headers
 		})
 			.then(response => {
-				console.log(`${response.url}: ${response.status}`)
+				// console.log(`${response.url}: ${response.status}`) // debug
 				if (response.status != 401 && response.status != 400) {
 					return response.json()
 				} else {
@@ -118,7 +118,7 @@ async function zam() {
 				headers: headers
 			})
 				.then(response => {
-					console.log(`${response.url}: ${response.status}`)
+					// console.log(`${response.url}: ${response.status}`) // debug
 					if (response.status != 401) {
 						return response.json()
 					} else {

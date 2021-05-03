@@ -38,7 +38,7 @@ export function getSpotifyToken() {
 			}
 		)
 			.then(response => {
-				console.log(`${response.url}: ${response.status}`);
+				// console.log(`${response.url}: ${response.status}`); // debug
 				if (response.status != 401 && response.status != 400) {
 					return response.json()
 				} else {
@@ -85,7 +85,7 @@ export function refreshSpotifyToken() {
 		}
 	)
 		.then(response => {
-			console.log(`${response.url}: ${response.status}`);
+			// console.log(`${response.url}: ${response.status}`); // debug
 			if (response.status != 401 && response.status != 400) {
 				return response.json()
 			} else {
