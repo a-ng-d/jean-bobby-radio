@@ -1,0 +1,31 @@
+// Welcome screen
+
+#welcome
+  padding: var(--xxlarge-space)
+
+  &.welcome--onair
+    background: var(--jb-linear-sunset)
+    background-size: 800%, 100%
+    animation: shiny-sunset 4s infinite var(--ease-peps) forwards
+
+  &.welcome-offair
+    background-image: var(--jb-salmon-milka-linear)
+
+    h1
+      opacity: .6
+
+  h1
+    word-break: break-all
+    margin: auto
+
+  span
+    margin: 0 var(--medium-space)
+    animation-name: entrance
+    animation-duration: .2s
+    animation-timing-function: var(--ease-peps)
+    animation-fill-mode: both
+    display: inline-block
+
+    @for $i from 1 through 10
+      &:nth-child(0n + #{$i})
+        animation-delay: ($i * .1s) - .1s + 1s
