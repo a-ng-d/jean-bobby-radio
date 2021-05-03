@@ -2,6 +2,9 @@ import { cl, io } from './global';
 import { stream } from './data';
 import { player } from './player';
 import { playState } from './components';
+import { makeWelcome } from './welcome';
+
+let i = 0;
 
 export function onAir() {
 
@@ -11,7 +14,13 @@ export function onAir() {
 
 	cl('.play-cta__btn').remove('play-cta__btn--unactive');
 
-	cl('input[name=\'play\']').remove('input--unactive')
+	cl('input[name=\'play\']').remove('input--unactive');
+
+	if (i < 1) {
+		makeWelcome(stream.onair, true)
+	}
+
+	i++
 
 };
 
@@ -31,5 +40,11 @@ export function offAir() {
 	cl('.track').replace('track--end', 'track--start');
 
 	io.setState = false
+
+	if (i < 1) {
+		makeWelcome(stream.offair, false)
+	}
+
+	i++
 
 };
