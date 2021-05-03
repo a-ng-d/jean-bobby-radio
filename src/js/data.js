@@ -8,8 +8,8 @@ export const
 		domain: 'https://live.jean-bobby.radio.fm',
 		mount: '/jbradio',
 		status: '/status-json.xsl',
-		onair: 'Jean-Bobby Radio 24/7 sound streaming is on-air 🥳',
-		offair: 'Jean-Bobby Radio 24/7 sound streaming is off-air 😴'
+		onair: 'JB Radio 24/7 sound system is on-air 🥳',
+		offair: 'JB Radio 24/7 sound system is off-air 😴'
 	},
 
 	spotify = {

@@ -1,4 +1,4 @@
-import { $, css } from './global';
+import { $ } from './global';
 
 export function makeWelcome(string, isOnair) {
 
@@ -24,13 +24,17 @@ export function makeWelcome(string, isOnair) {
       html = html.concat(`<span>${word}</span>`)
     });
     return html
+  };
+
+  setTimeout(() => document.body.classList.replace('dom--unloaded', 'dom--isrunning'), 100);
+
+  setTimeout(removeWelcome, 6000);
+
+  function removeWelcome() {
+    document.body.classList.replace('dom--isrunning', 'dom--loaded');
+    wel.addEventListener('animationend', (e) => {
+      e.target.remove()
+    })
   }
 
-  window.addEventListener('load', () => setTimeout(removeWelcome, 4000))
-
-};
-
-function removeWelcome() {
-  document.body.classList.replace('dom--unloaded', 'dom--loaded');
-  setTimeout(() => $('#welcome').remove(), 400)
 }

@@ -4,7 +4,8 @@ import { player } from './player';
 import { playState } from './components';
 import { makeWelcome } from './welcome';
 
-let i = 0;
+let i = 0,
+		j = 0;
 
 export function onAir() {
 
@@ -18,7 +19,7 @@ export function onAir() {
 
 	if (i < 1) {
 		makeWelcome(stream.onair, true)
-	}
+	};
 
 	i++
 
@@ -39,12 +40,12 @@ export function offAir() {
 
 	cl('.track').replace('track--end', 'track--start');
 
-	io.setState = false
+	io.setState = false;
 
-	if (i < 1) {
+	if (j < 1) {
 		makeWelcome(stream.offair, false)
-	}
+	};
 
-	i++
+	j++
 
 };
