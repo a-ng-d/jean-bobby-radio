@@ -17,12 +17,8 @@ async function sha() {
 
 	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
-			if(response.ok) {
-				return response.json()
-			} else {
-				return offAir()
-			}
 			// console.log(`${response.url}: ${response.status}`); // debug
+			return response.json()
 
 		})
 		.then(json => getTrackTitle(json))
@@ -32,8 +28,8 @@ async function sha() {
 
 		let arr, title;
 
-		if (datas.icestats.source == undefined) {
-			offAir()
+		if (datas.icestats.source == undefined || datas == undefined) {
+			return offAir()
 		} else {
 			title = datas.icestats.source.title
 

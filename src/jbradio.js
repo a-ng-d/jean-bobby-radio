@@ -15,7 +15,8 @@ import { toggleBtnEvent } from './js/components';
 
 // Now playing track infos
 // Player
-import { trackEvent } from './js/player';
+import { trackEvent, playBtnEvent } from './js/player';
+
 /// Notifications
 import { notifEvent, notifBtnEvent } from './js/notification';
 
