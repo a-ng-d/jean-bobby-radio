@@ -51,8 +51,6 @@ function infosCard(event) {
 
 				if (!isCardContent) {
 					return close()
-				} else {
-					return
 				}
 
 			}
@@ -65,7 +63,7 @@ function infosCard(event) {
 		card.classList.replace('icard--collapsed', 'icard--expanded');
 		window.addEventListener('click', closingRules, true);
 		if (card.className.match('feedback')) {
-			$('iframe').src = $('iframe').src
+			$('.feedback .icard__content').innerHTML = "<iframe src='https://chilipepper.io/form/insane-darkbrown-guajillo-bc4bef56-91d0-46cd-9e64-b4cf0c27cf5e'></iframe>"
 		}
 		toggle = true
 	};
