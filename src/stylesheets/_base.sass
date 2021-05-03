@@ -70,18 +70,40 @@ body
 	background-blend-mode: normal, color-dodge, normal
 
 	& > *
+		--running: 4s
 		transition: var(--jb-transition)
 
 	&.dom--loaded
-		& > *:not(#welcome)
-			opacity: 1
-		& > #welcome
-			opacity: 0
+		#welcome
+			--scale: 1.2
+
+			animation-name: exit-zoom
+			animation-duration: var(--turtoise)
+			animation-timing-function: var(--ease-peps)
+			animation-fill-mode: both
+
+		#main
+			--scale: 0.8
+
+			animation-name: entrance-zoom
+			animation-duration: calc(var(--turtoise) * 2)
+			animation-timing-function: var(--ease-peps)
+			animation-fill-mode: both
+			animation-delay: var(--late)
+
 	&.dom--unloaded
-		& > *:not(#welcome)
+		#welcome
 			opacity: 0
-		& > #welcome
+
+		#main
+			opacity: 0
+
+	&.dom--isrunning
+		#welcome
 			opacity: 1
+
+		#main
+			opacity: 0
 
 	#welcome
 		width: 100%
