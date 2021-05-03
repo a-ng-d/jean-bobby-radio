@@ -1,4 +1,4 @@
-import { $ } from './global';
+import { $, css } from './global';
 
 export function makeWelcome(string, isOnair) {
 
@@ -26,15 +26,11 @@ export function makeWelcome(string, isOnair) {
     return html
   }
 
-  window.addEventListener('load', () => {
-    setTimeout(removeWelcome, 8000)
-  })
+  window.addEventListener('load', () => setTimeout(removeWelcome, 4000))
 
 };
 
 function removeWelcome() {
-  document.body.classList.replace('dom--unloaded', 'dom--loaded')
-  setTimeout(() => {
-    $('#welcome').remove()
-  }, 4000)
+  document.body.classList.replace('dom--unloaded', 'dom--loaded');
+  setTimeout(() => $('#welcome').remove(), 400)
 }
