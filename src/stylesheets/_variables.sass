@@ -3,15 +3,15 @@
 \:root
 
 	/// Typography
-	--max-font-size: 160rem
-	--min-font-size: 12rem
+	--max-font-size: 160
+	--min-font-size: 12
 	--font-ref: 6.25%
-	--xlarge-body: var(--max-font-size)
-	--large-body: calc(var(--max-font-size) - (2 * var(--min-font-size)))
-	--medium-body: calc(var(--max-font-size) - (2 * var(--min-font-size)))
-	--small-body: calc(var(--max-font-size) - (8 * var(--min-font-size)))
-	--xsmall-body: calc(var(--max-font-size) - (10 * var(--min-font-size)))
-	--xxsmall-body: calc(var(--max-font-size) - (12 * var(--min-font-size)))
+	--xlarge-body: calc(var(--max-font-size) * 1rem)
+	--large-body: calc((1rem * var(--max-font-size)) - (2rem * var(--min-font-size)))
+	--medium-body: calc((1rem * var(--max-font-size)) - (4rem * var(--min-font-size)))
+	--small-body: calc((1rem * var(--max-font-size)) - (8rem * var(--min-font-size)))
+	--xsmall-body: calc((1rem * var(--max-font-size)) - (10rem * var(--min-font-size)))
+	--xxsmall-body: calc((1rem * var(--max-font-size)) - (12rem * var(--min-font-size)))
 
 	--plain-text: 16rem
 	--small-plain-text: 12rem
@@ -115,3 +115,7 @@
 
 	/// Texture
 	--texture: url('../assets/images/pattern.png') repeat
+
+	/// Breakpoints
+	--max-screen-size: 2560
+	--min-screen-size: 400

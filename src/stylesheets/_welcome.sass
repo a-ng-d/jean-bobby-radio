@@ -15,11 +15,12 @@
   h1
     word-break: break-all
     margin: auto
+    font-size: calc((var(--min-font-size) * 1rem) + (var(--max-font-size) - var(--min-font-size)) * (100vw - (var(--min-screen-size) * 1rem)) / (var(--max-screen-size) - var(--min-screen-size)))
 
   span
     --y: var(--xlarge-space)
 
-    margin: 0 var(--medium-space)
+    margin: 0 1vw
     animation-name: entrance-move
     animation-duration: var(--hare)
     animation-timing-function: var(--ease-peps)
