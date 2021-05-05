@@ -13,7 +13,7 @@ export function makeWelcome(string, isOnair) {
 
   const h = document.createElement('p');
   h.innerHTML = spanForEachWord(string);
-  h.classList.add('p--flex-label', 'p--dark')
+  h.classList.add('p--flex-label')
 
   wel.append(h)
   document.body.append(wel)
