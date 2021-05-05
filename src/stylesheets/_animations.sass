@@ -25,3 +25,43 @@
 	75%
 		transform: scale(var(--medium-value))
 		border-radius: var(--medium-value-radius)
+
+@keyframes entrance-move
+	0%
+		transform: translateY(var(--y))
+		opacity: 0
+	50%
+		opacity: 1
+	100%
+		transform: translateY(0)
+		opacity: 1
+
+@keyframes exit-move
+	0%
+		transform: translateY(0)
+		opacity: 1
+	50%
+		opacity: 0
+	100%
+		transform: translateY(var(--y))
+		opacity: 0
+
+@keyframes entrance-zoom
+	0%
+		transform: scale(var(--scale))
+		opacity: 0
+	50%
+		opacity: 1
+	100%
+		transform: scale(1)
+		opacity: 1
+
+@keyframes exit-zoom
+	0%
+		transform: scale(1)
+		opacity: 1
+	50%
+		opacity: 0
+	100%
+		transform: scale(var(--scale))
+		opacity: 0

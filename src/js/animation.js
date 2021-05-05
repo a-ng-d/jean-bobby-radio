@@ -6,7 +6,7 @@ let trigger = false;
 
 // Events
 export const
-  patchEvent = document.addEventListener('ready', patchJbIsFlying);
+  patchEvent = window.addEventListener('load', patchJbIsFlying);
 
 const
   jbIsFlying =

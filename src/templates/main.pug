@@ -4,23 +4,24 @@ extends _init.pug
 
 block content
 	
-	include ../assets/images/mono-sheet.svg
-	include _components.pug
+	#main
+		
+		include ../assets/images/mono-sheet.svg
+		include _components.pug
 
-	#jumbotron
-		include _header.pug
-		.play
-			include _play-btn.pug
-			include _track.pug
-			.play__animation.play__animation--start
+		#jumbotron
+			include _header.pug
+			.play
+				include _play-btn.pug
+				include _track.pug
+				.play__animation.play__animation--start
 
-	#player
-		audio.player
-		.more-options
-			+infos-card('#info', '#chevron-down')(class='details')
-				include _details.pug
-			+infos-card('#bullhorn', '#chevron-down')(class='feedback')
-				iframe(src='https://chilipepper.io/form/insane-darkbrown-guajillo-bc4bef56-91d0-46cd-9e64-b4cf0c27cf5e')
+		#player
+			audio.player
+			.more-options
+				+infos-card('#info', '#chevron-down')(class='details')
+					include _details.pug
+				+infos-card('#bullhorn', '#chevron-down')(class='feedback')
 	
 	script(
 		src='jbradio.min.js'

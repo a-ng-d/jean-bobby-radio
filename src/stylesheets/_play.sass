@@ -39,33 +39,25 @@
 							transform: translateY(0)
 							opacity: 1
 
-			&~.play-cta__screens
-
+			// &~.play-cta__screens
 				&--linear-sunset::before
-					--duration: .8s
-
+					--running: .8s
 					--lower-value: .8
 					--upper-value: 1.2
 					--medium-value: 1
-
 					--lower-value-radius: 22.4rem
 					--upper-value-radius: 14.4rem
 					--medium-value-radius: 16rem
-
-					animation: bouncing var(--duration) infinite
-
+					animation: bouncing var(--running) infinite
 				&--radial-sunset::after
-					--duration: .4s
-
+					--running: .4s
 					--lower-value: .6
 					--upper-value: 1.4
 					--medium-value: 1
-
 					--lower-value-radius: 32rem
 					--upper-value-radius: 12.8rem
 					--medium-value-radius: 16rem
-
-					animation: bouncing var(--duration) infinite
+					animation: bouncing var(--running) infinite
 
 		&.input--unactive
 			pointer-events: none
@@ -77,7 +69,7 @@
 		border-radius: 80rem
 		outline: 0
 		transition: var(--jb-transition)
-		transition-delay: var(--delay)
+		transition-delay: var(--on-time)
 		transform-origin: 50% 0
 
 		&:hover
@@ -102,22 +94,23 @@
 			fill: var(--jb-blueberry)
 
 	.play-cta__label
-		width: 600rem
-		height: 200rem
+		//width: 600rem
+		//height: 200rem
 		position: absolute
-		top: -264rem
-		left: -412rem
+		top: calc(50% - ((var(--min-font-size) * 1rem) + (var(--max-font-size) - var(--min-font-size)) * (100vw - (var(--min-screen-size) * 1rem)) / (var(--max-screen-size) - var(--min-screen-size))))
+		left: -32vw
 		z-index: 1
 
 		.play-cta__label--play, .play-cta__label--pause
-			width: 100%
-			height: 100%
+			//width: 100%
+			//height: 100%
 			position: absolute
 			display: flex
 			pointer-events: none
+			margin: 0
 
 		span
-			transition: opacity .2s var(--ease-peps), transform var(--duration) var(--ease-peps)
+			transition: opacity var(--hare) var(--ease-peps), transform var(--running) var(--ease-peps)
 			transform: translateY(64rem)
 			opacity: 0
 			text-shadow: var(--lightvitation)

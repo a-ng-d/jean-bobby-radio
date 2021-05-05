@@ -2,6 +2,8 @@
 
 /// Button
 .button
+	min-width: var(--xlarge-size)
+	min-height: var(--xlarge-size)
 	padding: 0 var(--regular-space)
 	border: none
 	border-radius: var(--regular-border-radius)
@@ -15,11 +17,11 @@
 	align-items: center
 
 	&:hover
-		background: var(--jb-linear-sunset)
+		background-image: var(--jb-linear-sunset)
 		background-size: 800%, 100%
 		box-shadow: var(--levitation), var(--accent)
 		transform: translateY(-8rem)
-		animation: shiny-sunset var(--duration) infinite var(--ease-peps) forwards
+		animation: shiny-sunset var(--running) infinite var(--ease-peps) forwards
 
 	&:active
 		box-shadow: var(--levitation), var(--pressed)
@@ -35,7 +37,7 @@
 		background-color: var(--jb-white)
 
 	&--secondary
-		height: 48rem
+		min-height: 48rem
 		color: var(--jb-blueberry)
 		background-color: var(--jb-milka)
 
@@ -46,14 +48,13 @@
 			top: 0
 			left: 0
 
-	&__toggle
-		padding: var(--medium-space)
-
+	&__icon--toggle
 		svg
 			width: var(--regular-size)
 			height: var(--regular-size)
 			fill: var(--jb-blueberry)
 			position: absolute
+			left: calc(50% - 8rem)
 			transition: var(--jb-transition)
 			z-index: 1
 
@@ -91,9 +92,9 @@
 	&--#{$class}::before
 		content: $label
 		color: var(--jb-blueberry)
-		background: var(--jb-linear-sunset)
+		background-image: var(--jb-linear-sunset)
 		background-size: 800%, 100%
-		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+		animation: shiny-sunset 4s infinite var(--ease-peps)
 
 @mixin inactive-tag($class, $label)
 	&--#{$class}::before
@@ -159,11 +160,11 @@
 				box-shadow: var(--levitation)
 
 			&:checked~.switch__indicator
-				--duration: 4s
+				--running: 4s
 
-				background: var(--jb-linear-sunset)
+				background-image: var(--jb-linear-sunset)
 				background-size: 800%, 100%
-				animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+				animation: shiny-sunset var(--running) infinite var(--ease-peps)
 
 			&:focus~.switch__indicator
 				box-shadow: var(--focus)
@@ -209,7 +210,7 @@
 	.icard__content
 		width: 400rem
 		min-height: 432rem
-		max-height: 832rem
+		max-height: calc(100vh - 96rem - 128rem)
 		overflow: scroll
 		padding: var(--medium-space)
 		background: var(--jb-white)

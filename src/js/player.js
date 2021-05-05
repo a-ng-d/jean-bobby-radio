@@ -7,7 +7,8 @@ import { playState, notifState, playBtn } from './components';
 
 // Events
 export const
-  trackEvent = document.addEventListener('ready', updateTrack);
+  trackEvent = document.addEventListener('DOMContentLoaded', updateTrack),
+  playBtnEvent = playBtn.addEventListener('click', playJB);
 
 // Set up the html5 player
 export const player = new Plyr('.player', {
@@ -29,10 +30,6 @@ player.source = {
 		}
 	]
 };
-
-// Events
-export const
-	playBtnEvent = playBtn.addEventListener('click', playJB);
 
 // Play button
 export function playJB() {

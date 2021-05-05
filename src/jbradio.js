@@ -13,15 +13,12 @@ import svg from './assets/images/mono-sheet.svg';
 // Components
 import { toggleBtnEvent } from './js/components';
 
+// Now playing track infos
 // Player
-import { trackEvent } from './js/player';
+import { trackEvent, playBtnEvent } from './js/player';
 
-// Now playing track
 /// Notifications
 import { notifEvent, notifBtnEvent } from './js/notification';
 
-/// Spotify token
+/// Spotify token when starting
 import { tokenEvent, storageEvent } from './js/spotify';
-
-// Patch double lottie animation
-import { patchEvent } from './js/animation';

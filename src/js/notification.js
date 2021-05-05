@@ -4,7 +4,7 @@ import { notifBtn } from './components';
 // Events
 export const
 	  notifBtnEvent = notifBtn.addEventListener('click', enableNotifications),
-		notifEvent = document.addEventListener('ready', getNotificationsStatus);
+		notifEvent = document.addEventListener('DOMContentLoaded', getNotificationsStatus);
 
 function getNotificationsStatus() {
 

@@ -21,14 +21,13 @@ p
 	&.p--center
 		text-align: center
 
-	&.p--sunset
+	// &.p--sunset
 		--duration: 4s
-
-		background: var(--jb-linear-sunset)
+		background-image: var(--jb-linear-sunset)
 		background-size: 400%, 100%
 		background-clip: text
 		-webkit-text-fill-color: transparent
-		animation: shiny-sunset var(--duration) infinite var(--ease-peps)
+		animation: shiny-sunset var(--duration) infinite var(--ease-peps
 
 	&.p--dark
 		color: var(--jb-blueberry)
@@ -40,6 +39,10 @@ p
 	&.p--regular-label
 		font-size: calc(var(--plain-text) * 2)
 		font-weight: 500
+
+	&.p--flex-label
+		font-size: calc((var(--min-font-size) * 1rem) + (var(--max-font-size) - var(--min-font-size)) * (100vw - (var(--min-screen-size) * 1rem)) / (var(--max-screen-size) - var(--min-screen-size)))
+		font-weight: 700
 
 a
 	font-size: var(--plain-text)
@@ -53,11 +56,6 @@ ul
 
 	li + li
 		margin: var(--regular-space) 0 0 0
-
-//@for $i from 1 through 6
-	$result: (128 / $i) * 1rem
-	article h#{$i}
-		margin: 0 0 $result 0
 
 article
 
@@ -73,24 +71,73 @@ body
 	background: var(--radial-mask), var(--texture), var(--jb-blueberry)
 	background-size: 100%, auto, auto
 	background-blend-mode: normal, color-dodge, normal
-	display: grid
-	grid-template-rows: auto 96rem
 
-	#jumbotron
-		grid-row: 1
-		display: grid
-		grid-template-rows: 128rem auto
+	&.dom--loaded
+		#welcome
+			--scale: 1.1
 
-		header.header
-			z-index: 2
+			animation-name: exit-zoom
+			animation-duration: var(--turtoise)
+			animation-timing-function: var(--ease-peps)
+			animation-fill-mode: both
 
-		.play
-			grid-row: 2
-			display: grid
-			z-index: 1
-			position: relative
+		#main
+			--scale: 0.9
 
-	#player
-		grid-row: 2
-		background-color: transparent
+			animation-name: entrance-zoom
+			animation-duration: calc(var(--turtoise) * 2)
+			animation-timing-function: var(--ease-peps)
+			animation-fill-mode: both
+			animation-delay: var(--late)
+
+	&.dom--unloaded
+		#welcome
+			opacity: 0
+
+		#main
+			opacity: 0
+
+	&.dom--isrunning
+		#welcome
+			opacity: 1
+
+		#main
+			opacity: 0
+
+	#welcome
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
 		display: flex
+		z-index: 2
+		transform-origin: 50% 50%
+		transition: all var(--turtoise) var(--ease-peps)
+
+	#main
+		width: 100%
+		height: 100%
+		background: transparent
+		display: grid
+		grid-template-rows: auto 96rem
+		z-index: 2
+		transform-origin: 50% 50%
+
+		#jumbotron
+			grid-row: 1
+			display: grid
+			grid-template-rows: 128rem auto
+
+			header.header
+				z-index: 2
+
+			.play
+				grid-row: 2
+				display: grid
+				z-index: 1
+				position: relative
+
+		#player
+			grid-row: 2
+			background-color: transparent
+			display: flex

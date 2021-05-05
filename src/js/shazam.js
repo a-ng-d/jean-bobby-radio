@@ -17,12 +17,8 @@ async function sha() {
 
 	return await fetch(`${stream.domain}/status-json.xsl`)
 		.then(response => {
-			console.log(`${response.url}: ${response.status}`);
-			if(response.ok) {
-				return response.json()
-			} else {
-				return offAir()
-			}
+			// console.log(`${response.url}: ${response.status}`); // debug
+			return response.json()
 
 		})
 		.then(json => getTrackTitle(json))
@@ -32,8 +28,8 @@ async function sha() {
 
 		let arr, title;
 
-		if (datas.icestats.source == undefined) {
-			offAir()
+		if (datas.icestats.source == undefined || datas == undefined) {
+			return offAir()
 		} else {
 			title = datas.icestats.source.title
 
@@ -77,7 +73,7 @@ async function zam() {
 			headers: headers
 		})
 			.then(response => {
-				console.log(`${response.url}: ${response.status}`)
+				// console.log(`${response.url}: ${response.status}`) // debug
 				if (response.status != 401 && response.status != 400) {
 					return response.json()
 				} else {
@@ -118,7 +114,7 @@ async function zam() {
 				headers: headers
 			})
 				.then(response => {
-					console.log(`${response.url}: ${response.status}`)
+					// console.log(`${response.url}: ${response.status}`) // debug
 					if (response.status != 401) {
 						return response.json()
 					} else {

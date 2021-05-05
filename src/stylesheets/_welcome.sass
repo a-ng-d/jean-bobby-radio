@@ -1,0 +1,31 @@
+// Welcome screen
+
+#welcome
+  padding: var(--xxlarge-space)
+
+  &.welcome--onair
+    background: var(--jb-radial-sunset)
+
+    p
+      color: var(--jb-blueberry)
+
+  &.welcome--offair
+    background: transparent
+
+  p
+    word-break: break-all
+    margin: auto
+
+  span
+    --y: var(--xlarge-space)
+
+    margin: 0 1vw
+    animation-name: entrance-move
+    animation-duration: var(--hare)
+    animation-timing-function: var(--ease-peps)
+    animation-fill-mode: both
+    display: inline-block
+
+    @for $i from 1 through 10
+      &:nth-child(0n + #{$i})
+        animation-delay: ($i * .1s) - .1s + 1s
