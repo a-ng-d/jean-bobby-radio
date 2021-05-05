@@ -41,6 +41,10 @@ p
 		font-size: calc(var(--plain-text) * 2)
 		font-weight: 500
 
+	&.p--flex-label
+		font-size: calc((var(--min-font-size) * 1rem) + (var(--max-font-size) - var(--min-font-size)) * (100vw - (var(--min-screen-size) * 1rem)) / (var(--max-screen-size) - var(--min-screen-size)))
+		font-weight: 700
+
 a
 	font-size: var(--plain-text)
 	color: var(--jb-milka)

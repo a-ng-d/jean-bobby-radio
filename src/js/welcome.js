@@ -11,8 +11,9 @@ export function makeWelcome(string, isOnair) {
   wel.id = 'welcome';
   wel.className = actions[isOnair];
 
-  const h = document.createElement('h1');
+  const h = document.createElement('p');
   h.innerHTML = spanForEachWord(string);
+  h.classList.add('p--flex-label', 'p--dark')
 
   wel.append(h)
   document.body.append(wel)
