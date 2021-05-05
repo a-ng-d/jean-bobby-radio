@@ -39,32 +39,24 @@
 							transform: translateY(0)
 							opacity: 1
 
-			&~.play-cta__screens
-
+			// &~.play-cta__screens
 				&--linear-sunset::before
 					--running: .8s
-
 					--lower-value: .8
 					--upper-value: 1.2
 					--medium-value: 1
-
 					--lower-value-radius: 22.4rem
 					--upper-value-radius: 14.4rem
 					--medium-value-radius: 16rem
-
 					animation: bouncing var(--running) infinite
-
 				&--radial-sunset::after
 					--running: .4s
-
 					--lower-value: .6
 					--upper-value: 1.4
 					--medium-value: 1
-
 					--lower-value-radius: 32rem
 					--upper-value-radius: 12.8rem
 					--medium-value-radius: 16rem
-
 					animation: bouncing var(--running) infinite
 
 		&.input--unactive
