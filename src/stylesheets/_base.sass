@@ -71,7 +71,7 @@ body
 
 	&.dom--loaded
 		#welcome
-			--scale: 1.2
+			--scale: 1.1
 
 			animation-name: exit-zoom
 			animation-duration: var(--turtoise)
@@ -79,7 +79,7 @@ body
 			animation-fill-mode: both
 
 		#main
-			--scale: 0.8
+			--scale: 0.9
 
 			animation-name: entrance-zoom
 			animation-duration: calc(var(--turtoise) * 2)
@@ -102,7 +102,6 @@ body
 			opacity: 0
 
 	#welcome
-
 		width: 100%
 		height: 100%
 		position: absolute
@@ -110,7 +109,7 @@ body
 		display: flex
 		z-index: 2
 		transform-origin: 50% 50%
-		transition: all var(--running) var(--ease-peps)
+		transition: all var(--turtoise) var(--ease-peps)
 
 	#main
 		width: 100%
@@ -120,7 +119,6 @@ body
 		grid-template-rows: auto 96rem
 		z-index: 2
 		transform-origin: 50% 50%
-		transition: all 4s var(--ease-peps)
 
 		#jumbotron
 			grid-row: 1
