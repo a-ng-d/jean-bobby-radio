@@ -15,7 +15,7 @@
 	align-items: center
 
 	&:hover
-		background: var(--jb-linear-sunset)
+		background-image: var(--jb-linear-sunset)
 		background-size: 800%, 100%
 		box-shadow: var(--levitation), var(--accent)
 		transform: translateY(-8rem)
@@ -91,7 +91,7 @@
 	&--#{$class}::before
 		content: $label
 		color: var(--jb-blueberry)
-		background: var(--jb-linear-sunset)
+		background-image: var(--jb-linear-sunset)
 		background-size: 800%, 100%
 		animation: shiny-sunset 4s infinite var(--ease-peps)
 
@@ -161,7 +161,7 @@
 			&:checked~.switch__indicator
 				--running: 4s
 
-				background: var(--jb-linear-sunset)
+				background-image: var(--jb-linear-sunset)
 				background-size: 800%, 100%
 				animation: shiny-sunset var(--running) infinite var(--ease-peps)
 
