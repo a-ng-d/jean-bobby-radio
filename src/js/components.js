@@ -8,7 +8,7 @@ export const
 		notifBtn = $('.switch--now-playing'),
 		notifState = $('input[name=\'switch\']'),
 		playState = $('input[name=\'play\']'),
-    toggleBtn = each$('.button__toggle');
+    toggleBtn = each$('.button__icon--toggle');
 
 // Events
 export const
