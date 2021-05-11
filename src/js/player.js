@@ -15,8 +15,7 @@ export const player = new Plyr('.player', {
 	title: radio.title,
 	controls: [
 		'mute',
-		'volume',
-		'airplay'
+		'volume'
 	]
 });
 
