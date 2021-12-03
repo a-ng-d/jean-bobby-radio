@@ -1,0 +1,21 @@
+// Adaptive
+
+@media (max-width: 1023px)
+  body
+    #welcome
+      padding: var(--regular-space)
+    #main
+      #jumbotron
+        grid-template-rows: 96rem auto
+        header.header
+          margin: 0 var(--regular-space)
+          .header__nav
+            *:not(.tag)
+              display: none
+          .header__logotype
+            svg
+              height: 72rem
+
+@media (max-width: 459px)
+  .more-options
+    display: none !important
