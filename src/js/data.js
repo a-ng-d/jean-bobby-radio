@@ -18,6 +18,7 @@ export const
 		playlistId: '65SJCvnRdfbLpyxTVCglYJ',
 		clientId: null,
 		clientSecret: null,
+		playlistId: '2r8HycrnaBQcAHgwjKpa8z',
 		cache: '$spotify_access'
 	},
 
