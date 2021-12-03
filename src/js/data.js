@@ -1,7 +1,7 @@
 export const
 	radio = {
 		title: 'Jean-Bobby Radio',
-		url: 'http://localhost:8080'
+		url: 'https://jean-bobby.radio.fm'
 	},
 
 	stream = {
@@ -15,7 +15,6 @@ export const
 	spotify = {
 		authUrl: 'https://accounts.spotify.com/authorize',
 		tokenUrl: 'https://accounts.spotify.com/api/token',
-		playlistId: '65SJCvnRdfbLpyxTVCglYJ',
 		clientId: null,
 		clientSecret: null,
 		playlistId: '2r8HycrnaBQcAHgwjKpa8z',
