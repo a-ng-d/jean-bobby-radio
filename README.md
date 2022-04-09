@@ -4,7 +4,7 @@ Before the COVID-19 pandemic, with my teammate in the UX team, we were used to l
 ## Contribution
 - Clone this repository (or fork it)
 - Install dependencies with `npm install`
-- Run `npm run start:dev` to watch in development mode
+- Run `npm run start:dev` to run a local server and watch in development mode
 - Enjoy!
 
 ## Attribution
