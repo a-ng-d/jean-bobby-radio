@@ -53,14 +53,23 @@ const
       assetModuleFilename: 'images/[name][ext]'
     },
     devServer: {
-      port: 8080,
+      client: {
+        webSocketURL: {
+          hostname: "0.0.0.0",
+          pathname: "/ws",
+          port: 8080
+        },
+        logging: 'info'
+      },
       compress: true,
-      hot: false,
+      hot: 'only',
       liveReload: true,
-      clientLogLevel: 'silent',
-      contentBase: [
-        path.join(__dirname, 'static')
-      ],
+      static: {
+        directory: path.join(__dirname, 'static'),
+        staticOptions: {},
+        serveIndex: true,
+        watch: true
+      }
     },
     plugins: [],
     module: {
