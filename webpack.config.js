@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const
   sassLoader = {
@@ -87,7 +87,7 @@ module.exports = (env, argv) => {
     config.plugins.push(pluginCss, pluginPug)
   }
   if (argv.mode === 'production') {
-    config.optimization.minimizer.push(new UglifyJsPlugin(), new CssMinimizerPlugin());
+    config.optimization.minimizer.push(new TerserPlugin(), new CssMinimizerPlugin());
     config.module.rules.push(sassLoader, assetLoader, pugLoader);
     config.plugins.push(pluginCss, pluginPug)
   }
