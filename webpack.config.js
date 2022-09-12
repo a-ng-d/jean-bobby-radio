@@ -5,8 +5,21 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 
 const
+  excludePlyr =  {
+    test: /plyr\.css$/,
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options : {
+          publicPath: './'
+        }
+      },
+      'css-loader'
+    ]
+  },
   sassLoader = {
     test: /\.(sa|c)ss$/i,
+    exclude: /plyr\.css$/,
     use: [
       {
         loader: MiniCssExtractPlugin.loader,
@@ -83,12 +96,12 @@ const
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
-    config.module.rules.push(sassLoader, assetLoader, pugLoader);
+    config.module.rules.push(excludePlyr, sassLoader, assetLoader, pugLoader);
     config.plugins.push(pluginCss, pluginPug)
   }
   if (argv.mode === 'production') {
     config.optimization.minimizer.push(new TerserPlugin(), new CssMinimizerPlugin());
-    config.module.rules.push(sassLoader, assetLoader, pugLoader);
+    config.module.rules.push(excludePlyr, sassLoader, assetLoader, pugLoader);
     config.plugins.push(pluginCss, pluginPug)
   }
   return config;
