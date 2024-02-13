@@ -22,7 +22,7 @@ async function sha() {
 
 		})
 		.then(json => getTrackTitle(json))
-		.catch(error => console.error(error));
+		.catch(error => offAir());
 
 	function getTrackTitle(datas) {
 
