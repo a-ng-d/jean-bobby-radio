@@ -20,20 +20,19 @@
 	"author": "Aurélien Grimaud",
 	"license": "CC-BY 4.0",
 	"dependencies": {
-		"autoprefixer": "^10.2.4",
 		"lottie-web": "^5.7.7",
-		"plyr": "^3.7.2",
-		"postcss": "^8.2.6",
-		"pug-loader": "^2.4.0",
-		"sass": "^1.32.8"
+		"plyr": "^3.7.2"
 	},
 	"devDependencies": {
+		"autoprefixer": "^10.4.17",
 		"css-loader": "^6.7.1",
 		"css-minimizer-webpack-plugin": "^3.4.1",
 		"html-webpack-plugin": "^5.5.0",
 		"mini-css-extract-plugin": "^2.6.0",
+		"postcss": "^8.4.35",
 		"postcss-loader": "^6.2.1",
-		"pug": "^3.0.2",
+		"pug-loader": "^1.0.2",
+		"sass": "^1.70.0",
 		"sass-loader": "^12.6.0",
 		"style-loader": "^3.3.1",
 		"terser-webpack-plugin": "^5.3.4",
